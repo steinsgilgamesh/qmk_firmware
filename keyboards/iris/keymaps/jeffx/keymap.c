@@ -7,7 +7,7 @@ extern keymap_config_t keymap_config;
 #define _QWERTY 0
 #define _LW 1
 #define _RS 2
-#define _FN 16
+#define _FN 3 
 
 enum custom_keycodes {
   QWERTY = SAFE_RANGE,
@@ -33,6 +33,8 @@ enum custom_keycodes {
 #define KC_RVAI RGB_VAI
 #define KC_RVAD RGB_VAD
 
+#define LM_FNGUI LM(_FN, MOD_BIT(KC_LGUI))
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* QWERTY
@@ -45,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+--------+--------+--------+--------+--------+--------.    .--------+--------+--------+--------------------------+--------|
  * | LSHIFT | Z      | X      | C      | V      | B      | PLAY   |    | ????   | N      | M      | ,      | .      | /      | RSHIFT |
  * '-----------------------------------+--------+--------+--------|    |--------+--------+--------+-----------------------------------'
- *                                     | OS     | ALT    | SPACE  |    | FN     | LOWER  | RAISE  |
+ *                                     | OS/FN  | ALT    | SPACE  |    | LOWER  | RAISE  | FUNC   |
  *                                     '--------------------------'    '--------------------------'
  */
 
@@ -54,7 +56,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                           KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_DEL  ,
     KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                           KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN, KC_ENT  ,
     KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_MPLY,      KC_MNXT, KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH, KC_RSFT ,
-                                        KC_LGUI, KC_LALT, KC_SPC,       MO(_FN), MO(_LW), MO(_RS)
+                                        LM_FNGUI,KC_LALT, KC_SPC,       MO(_LW), MO(_RS), TG(_FN)
  ),
 
 
