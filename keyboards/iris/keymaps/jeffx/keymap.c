@@ -184,27 +184,49 @@ void matrix_init_user(void) {
 void matrix_scan_user(void) {
     knob_report_t knob_report = knob_report_read();
     knob_report_reset();
-    while (knob_report.dir < 0) 
+    if (knob_report.dir < 0)
     {
-      register_code(KC_RIGHT);
-      unregister_code(KC_RIGHT);
-      register_code(KC_RIGHT);
-      unregister_code(KC_RIGHT);
-      register_code(KC_RIGHT);
-      unregister_code(KC_RIGHT);
+            while (knob_report.dir < 0) 
+    {
+      register_code(KC_DOWN);
+      unregister_code(KC_DOWN);
       knob_report.dir++;
     }
+    return;
+    }
+    else
+    {
     while (knob_report.dir > 0) 
     {
-      register_code(KC_LEFT);
-      unregister_code(KC_LEFT);
-      register_code(KC_LEFT);
-      unregister_code(KC_LEFT);
-      register_code(KC_LEFT);
-      unregister_code(KC_LEFT);
+      register_code(KC_UP);
+      unregister_code(KC_UP);
       knob_report.dir--;
     }
+    }
+
+
 }
 
 void matrix_slave_scan_user(void) {
+
+      knob_report_t knob_report = knob_report_read();
+    knob_report_reset();
+    if (knob_report.dir < 0)
+    {
+            while (knob_report.dir < 0) 
+    {
+      register_code(KC_DOWN);
+      unregister_code(KC_DOWN);
+      knob_report.dir++;
+    }
+    }
+    else
+    {
+    while (knob_report.dir > 0) 
+    {
+      register_code(KC_UP);
+      unregister_code(KC_UP);
+      knob_report.dir--;
+    }
+    }
 }

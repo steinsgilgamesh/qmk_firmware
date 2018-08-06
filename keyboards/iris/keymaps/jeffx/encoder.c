@@ -8,7 +8,7 @@ void knob_init(void) {
     // Switching this to use F4/F5 on Iris
 
     // Set pin mode for D4 as input.
-    DDRF &= ~(0UL << PF4);
+    DDRF &= ~(0 << PF4);
 
     // Enable internal pull-up for D4.
     // This is done by "writing" 1 to a pin that has its mode set to input.
@@ -24,18 +24,23 @@ void knob_init(void) {
     // INT:    33221100
     EICRA |= 0b00000100;  // 0b01 - any edge
     // INT:     6  3210
-    //EIMSK |= 0b00000010;
+    EIMSK |= 0b00000010;
 }
 
 ISR(INT1_vect) {
     // Port PD1 (Pin 2)
-    bool a = PINF & (1 << PF5);
-
+    bool a = ((PINF&(1<<5)));
+    bool b = ((PINF&(1<<4)));
+    if (a)
+        knob_report.dir++;
+    if (b)
+        knob_report.dir--;
+/*
     if (knob_prev_a != a) {
         // "A" channel has REALLY changed.
         knob_report.phase = a;
         knob_prev_a = a;
-        bool b = PINF & (1 << PF4);
+        bool b = ((PINF&(1<<4)));
         if (a == b) {
             // Halfway through CCW rotation (A == B)
             //
@@ -57,7 +62,7 @@ ISR(INT1_vect) {
             // B: ________/^^^^^\__
             knob_report.dir--;
         }
-    }
+    }*/
 }
 
 knob_report_t knob_report_read(void) {
