@@ -1,6 +1,7 @@
 #include "iris.h"
 #include "action_layer.h"
 #include "eeconfig.h"
+#include "encoder.h"
 
 extern keymap_config_t keymap_config;
 
@@ -143,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
  [_RS] = LAYOUT( 
-    KC_TILD,  _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, _______ ,  
+    KC_TILD, _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, _______ ,  
     _______, _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, _______ ,  
     _______, _______, _______, _______, _______, _______,                        _______, KC_UNDS, KC_PLUS, KC_DQUO, KC_PIPE, _______ ,  
     _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, KC_LCBR, KC_RCBR, KC_QUES, _______ ,  
@@ -174,3 +175,36 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  )
  
 };
+
+void matrix_init_user(void) { 
+    knob_init();
+    
+}
+
+void matrix_scan_user(void) {
+    knob_report_t knob_report = knob_report_read();
+    knob_report_reset();
+    while (knob_report.dir < 0) 
+    {
+      register_code(KC_RIGHT);
+      unregister_code(KC_RIGHT);
+      register_code(KC_RIGHT);
+      unregister_code(KC_RIGHT);
+      register_code(KC_RIGHT);
+      unregister_code(KC_RIGHT);
+      knob_report.dir++;
+    }
+    while (knob_report.dir > 0) 
+    {
+      register_code(KC_LEFT);
+      unregister_code(KC_LEFT);
+      register_code(KC_LEFT);
+      unregister_code(KC_LEFT);
+      register_code(KC_LEFT);
+      unregister_code(KC_LEFT);
+      knob_report.dir--;
+    }
+}
+
+void matrix_slave_scan_user(void) {
+}
