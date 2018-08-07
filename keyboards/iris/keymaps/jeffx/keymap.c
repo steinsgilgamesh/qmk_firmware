@@ -2,6 +2,8 @@
 #include "action_layer.h"
 #include "eeconfig.h"
 #include "encoder.h"
+#include "pincontrol.h"
+#include "print.h"
 
 extern keymap_config_t keymap_config;
 
@@ -122,7 +124,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
  [_LW] = LAYOUT( 
     KC_GRV,  _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, _______ ,  
-    _______, _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, _______ ,  
+    DEBUG, _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, _______ ,  
     _______, _______, _______, _______, _______, _______,                        _______, KC_MINS, KC_EQL,  KC_QUOT, KC_BSLS, _______ ,  
     _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, KC_LBRC, KC_RBRC, KC_SLSH, _______ ,  
                                         _______, _______, _______,      _______, _______, _______ 
@@ -145,7 +147,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
  [_RS] = LAYOUT( 
     KC_TILD, _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, _______ ,  
-    _______, _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, _______ ,  
+    DEBUG, _______, _______, _______, _______, _______,                        _______, _______, _______, _______, _______, _______ ,  
     _______, _______, _______, _______, _______, _______,                        _______, KC_UNDS, KC_PLUS, KC_DQUO, KC_PIPE, _______ ,  
     _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, KC_LCBR, KC_RCBR, KC_QUES, _______ ,  
                                         _______, _______, _______,      _______, _______, _______ 
@@ -176,57 +178,101 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  
 };
 
-void matrix_init_user(void) { 
-    knob_init();
-    
+#define ENC_RD	PINF	//encoder port read
+#define ENC_CTL	DDRF	//encoder port control
+#define ENC_WR	PORTF	//encoder port write	
+#define A_PIN PF4  // pdip 4, associated with INT0 vector; PD4
+#define B_PIN PF5  // pdip 5, associated with INT1 vector; PD5
+
+ 
+void matrix_init_user(void) {
+
+  pinMode(A_PIN, PinDirectionInput);
+  pinMode(B_PIN, PinDirectionInput);
+
+  //turn on pullups
+  ENC_WR |= (( 1<<A_PIN )|( 1<<B_PIN ));
+
+  // EICRA sets interrupt type for INT0...3
+  //EICRA |= (1<<ISC10)|(0<<ISC11);
+  // sets the interrupt type for EICRB (INT6). 
+  //EICRB |= (1<<ISC60)|(0<<ISC61); 
+  /*
+  ISCn0  ISCn1	Where n is the interrupt. 0 for 0, etc
+    0      0	Triggers on low level
+    1      0	Triggers on edge
+    0      1	Triggers on falling edge
+    1      1	Triggers on rising edge
+  */
+
+//EIMSK |= (1<<INT6); // activates the interrupt. 6 for 6, etc;
+
+//EIMSK |= (1<<INT1);
+
 }
+int encA, encB;
+int oldencA = 0;
+int oldencB = 0;
+int encCCW = 0;
+int encCW = 0;
+int counter = 0;
+/*
+ISR(INT6_vect)
+{
+enc_getdir();
+}*/
+
+//ISR(INT1_vect)
+//{
+//enc_getdir();
+//}
+
 
 void matrix_scan_user(void) {
-    knob_report_t knob_report = knob_report_read();
-    knob_report_reset();
-    if (knob_report.dir < 0)
-    {
-            while (knob_report.dir < 0) 
-    {
-      register_code(KC_DOWN);
-      unregister_code(KC_DOWN);
-      knob_report.dir++;
-    }
-    return;
-    }
-    else
-    {
-    while (knob_report.dir > 0) 
-    {
-      register_code(KC_UP);
-      unregister_code(KC_UP);
-      knob_report.dir--;
-    }
-    }
+  // put pin values in their own vars to avoid bit manipulations for every calculation
+if (PINF & (1<<PINF4)) encA = 1; else encA = 0;
+if (PINF & (1<<PINF5)) encB = 1; else encB = 0;
 
+// count only if both pins are equal ie 00 or 11 and only one of the pins has changed
+if (encA == encB) {
+    // a change in the A pin means CW otherwise CCW
+    if (oldencA ^ encA)
+    {
+          encCW++;	// count CW steps
+          print("encCCW value: ");
+        dprintf("%d", encCW);
+        println("");
 
+    }
+    else if (oldencB ^ encB)
+    {
+      encCCW++;	// counts the CCW steps
+            print("encCW value: ");
+        dprintf("%d", encCCW);
+        println("");
+
+    }
 }
-
-void matrix_slave_scan_user(void) {
-
-      knob_report_t knob_report = knob_report_read();
-    knob_report_reset();
-    if (knob_report.dir < 0)
+oldencA = encA; 
+oldencB = encB;
+  if (encCCW > encCW)
+  {
+    while (encCCW > 0)
     {
-            while (knob_report.dir < 0) 
+  register_code(KC_UP);
+  unregister_code(KC_UP);
+  --encCCW;
+    }
+      encCW = 0;
+  }
+  else if (encCCW < encCW)
+  {
+    while (encCW > 0)
     {
-      register_code(KC_DOWN);
-      unregister_code(KC_DOWN);
-      knob_report.dir++;
+  register_code(KC_DOWN);
+  unregister_code(KC_DOWN);
+  --encCW;
     }
-    }
-    else
-    {
-    while (knob_report.dir > 0) 
-    {
-      register_code(KC_UP);
-      unregister_code(KC_UP);
-      knob_report.dir--;
-    }
-    }
+      encCCW = 0;
+  }
 }

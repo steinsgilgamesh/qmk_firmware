@@ -26,7 +26,7 @@ void knob_init(void) {
     // INT:     6  3210
     EIMSK |= 0b00000010;
 }
-
+/*
 ISR(INT1_vect) {
     // Port PD1 (Pin 2)
     bool a = ((PINF&(1<<5)));
@@ -35,7 +35,6 @@ ISR(INT1_vect) {
         knob_report.dir++;
     if (b)
         knob_report.dir--;
-/*
     if (knob_prev_a != a) {
         // "A" channel has REALLY changed.
         knob_report.phase = a;
@@ -62,8 +61,8 @@ ISR(INT1_vect) {
             // B: ________/^^^^^\__
             knob_report.dir--;
         }
-    }*/
-}
+    }
+}*/
 
 knob_report_t knob_report_read(void) {
     // Return knob report.
