@@ -64,12 +64,19 @@
     ED_NOTE(_E6),
 
 #define PLANCK_SOUND  \
+    E__NOTE(_C5 ),     \
+    E__NOTE(_E5),     \
+    E__NOTE(_G5 ),     \
+    E__NOTE(_C6 )
+
+/*
+#define PLANCK_SOUND  \
     ED_NOTE(_E7 ),     \
     E__NOTE(_CS7),     \
     E__NOTE(_E6 ),     \
     E__NOTE(_A6 ),     \
     M__NOTE(_CS7, 20),
-
+*/
 #define PREONIC_SOUND \
     M__NOTE(_B5, 20),  \
     E__NOTE(_B6),      \

@@ -24,8 +24,8 @@
 
 /* enable basic MIDI features:
    - MIDI notes can be sent when in Music mode is on
-*/
-                                
+*/                                
+
 #define MIDI_BASIC
 
 /* enable advanced MIDI features:
@@ -38,5 +38,5 @@
 
 /* override number of MIDI tone keycodes (each octave adds 12 keycodes and allocates 12 bytes) */
 //#define MIDI_TONE_KEYCODE_OCTAVES 2
-
+#define BACKLIGHT_BREATHING
 #endif
