@@ -61,9 +61,10 @@ static void keyboard_master_setup(void) {
   serial_master_init();
 #endif
 
-    // For master the Backlight info needs to be sent on startup
-    // Otherwise the salve won't start with the proper info until an update
-    BACKLIT_DIRTY = true;
+  // For master the backlight and rgblight info needs to be sent on startup
+  // Otherwise the slave won't start with the proper info until an update
+  BACKLIT_DIRTY = true;
+  RGB_DIRTY = true;
 }
 
 static void keyboard_slave_setup(void) {
@@ -106,14 +107,14 @@ void keyboard_slave_loop(void) {
     
     // Read Backlight Info
     #ifdef BACKLIGHT_ENABLE
-        if (BACKLIT_DIRTY) {
-            #ifdef USE_I2C
+        #ifdef USE_I2C
+            if (BACKLIT_DIRTY) {
                 backlight_set(i2c_slave_buffer[I2C_BACKLIT_START]);
-            #else // USE_SERIAL
-                backlight_set(serial_master_buffer[SERIAL_BACKLIT_START]);
-            #endif
-            BACKLIT_DIRTY = false;
-        }
+                BACKLIT_DIRTY = false;
+            }
+        #else // USE_SERIAL
+            backlight_set(serial_master_buffer[SERIAL_BACKLIT_START]);
+        #endif
     #endif
     // Read RGB Info
     #ifdef RGBLIGHT_ENABLE
@@ -131,7 +132,7 @@ void keyboard_slave_loop(void) {
                 }
                 
                 // Update the RGB now with the new data and set RGB_DIRTY to false
-                rgblight_update_dword(dword);
+                rgblight_update_dword_noeeprom(dword);
                 RGB_DIRTY = false;
                 // Re-enable interupts now that RGB is set
                 sei();

@@ -261,7 +261,7 @@ i2c_error: // the cable is disconnceted, or something else went wrong
             err = i2c_master_write(I2C_RGB_START);
             if (err) goto i2c_error;
             
-            uint32_t dword = eeconfig_read_rgblight();
+            uint32_t dword = rgblight_get_raw();
             
             // Write RGB
             err = i2c_master_write_data(&dword, 4);
@@ -340,24 +340,6 @@ void matrix_slave_scan(void) {
     for (int i = 0; i < ROWS_PER_HAND; ++i) {
         serial_slave_buffer[i] = matrix[offset+i];
     }
-#endif
-#ifdef USE_I2C
-#ifdef BACKLIGHT_ENABLE
-    // Read backlight level sent from master and update level on slave
-    backlight_set(i2c_slave_buffer[0]);
-#endif
-    for (int i = 0; i < ROWS_PER_HAND; ++i) {
-        i2c_slave_buffer[i+1] = matrix[offset+i];
-    }
-#else // USE_SERIAL
-    for (int i = 0; i < ROWS_PER_HAND; ++i) {
-        serial_slave_buffer[i] = matrix[offset+i];
-    }
-
-#ifdef BACKLIGHT_ENABLE
-    // Read backlight level sent from master and update level on slave
-    backlight_set(serial_master_buffer[SERIAL_BACKLIT_START]);
-#endif
 #endif
     matrix_slave_scan_user();
 }
