@@ -1,6 +1,4 @@
-#include "iris.h"
-#include "action_layer.h"
-#include "eeconfig.h"
+#include QMK_KEYBOARD_H
 #include "encoder.h"
 #include "pincontrol.h"
 #include "print.h"
