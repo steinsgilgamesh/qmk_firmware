@@ -1,5 +1,4 @@
 #include QMK_KEYBOARD_H
-#include "encoder.h"
 #include "pincontrol.h"
 #include "print.h"
 
