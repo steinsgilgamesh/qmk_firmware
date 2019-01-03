@@ -137,9 +137,9 @@ Missing still...
   // { _______, KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, _______, _______, _______, _______, ___T___, ___T___, _______ },
   //{ _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______  },
   { KC_F11,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_PSCR, KC_SLCK, KC_PAUS, KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,  KC_F12  },
-  { _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    _______, _______, _______, KC_LBRC, KC_RBRC, KC_BSLS, KC_GRV,   _______, _______  },
-  { _______, KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______, _______, _______, KC_SCLN, KC_QUOT, KC_MINS, KC_EQL,   _______, _______  },
-  { _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_COMM, KC_DOT,  KC_SLSH, KC_MUTE,  KC_VOLU, KC_MPLY  },
+  { _______, _______, KC_7,    KC_8,    KC_9,    KC_0,    _______, _______, _______, KC_LBRC, KC_RBRC, KC_MINS, KC_EQL,   _______, _______  },
+  { _______, _______, KC_4,    KC_5,    KC_6,    _______, _______, _______, _______, _______, KC_SCLN, KC_QUOT, KC_BSLS,  KC_MUTE, _______  },
+  { _______, _______, KC_1,    KC_2,    KC_3,    _______, _______, _______, _______, _______, KC_COMM, KC_DOT,  KC_SLSH,  KC_VOLU, KC_MPLY  },
   { KC_LSFT, KC_LALT, KC_LGUI, _______, _______, KC_LCTL, _______, KC_RSFT, _______, _______, _______, _______, KC_MPRV,  KC_VOLD, KC_MNXT  },
  },
 
@@ -159,9 +159,9 @@ Missing still...
  
  [_RAISE] = { /* RAISED */
   { KC_F11,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_PSCR, KC_SLCK, KC_PAUS, KC_F6,   KC_F7,   KC_F8,   KC_F9,    KC_F10,  KC_F12 },
-  { _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, _______, _______, _______, KC_LCBR, KC_RCBR, KC_PIPE, KC_TILD,  _______, _______  },
-  { _______, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______, _______, _______, KC_COLN, KC_DQT,  KC_UNDS, KC_PLUS,  _______, _______ },
-  { _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_LT,   KC_GT,   KC_QUES, _______,  _______, _______  },
+  { _______, _______, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, _______, _______, _______, KC_LCBR, KC_RCBR, KC_UNDS, KC_PLUS,  _______, _______  },
+  { _______, _______, KC_DLR,  KC_PERC, KC_CIRC, _______, _______, _______, _______, _______, KC_COLN, KC_DQT,  KC_PIPE,  _______, _______ },
+  { _______, _______, KC_EXLM, KC_AT,   KC_HASH, _______, _______, _______, _______, _______, KC_LT,   KC_GT,   KC_QUES,  _______, _______  },
   { KC_LSFT, KC_LALT, KC_LGUI, _______, _______, KC_LCTL, _______, KC_RSFT, _______, _______, _______, _______, _______,  _______, _______  },
  },
  
