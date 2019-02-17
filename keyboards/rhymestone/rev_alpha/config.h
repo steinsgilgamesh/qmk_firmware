@@ -16,12 +16,12 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef REV1_CONFIG_H
-#define REV1_CONFIG_H
+#ifndef REV_ALPHA_CONFIG_H
+#define REV_ALPHA_CONFIG_H
 
 /* USB Device descriptor parameter */
-#define VENDOR_ID       0xDFA1
-#define PRODUCT_ID      0x0001
+#define VENDOR_ID       0xFEED
+#define PRODUCT_ID      0xDFA1
 #define DEVICE_VER      0x0010
 #define MANUFACTURER    marksard
 #define PRODUCT         Rhymestone

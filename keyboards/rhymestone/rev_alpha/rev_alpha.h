@@ -1,5 +1,5 @@
-#ifndef REV1_H
-#define REV1_CONFIG_H
+#ifndef REV_ALPHA_H
+#define REV_ALPHA_CONFIG_H
 
 #include "../rhymestone.h"
 

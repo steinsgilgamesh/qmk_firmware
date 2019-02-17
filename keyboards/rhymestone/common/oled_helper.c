@@ -4,7 +4,7 @@
 #include "split_util.h"
 
 void init_oled(void) {
-#ifdef REV1_CONFIG_H
+#ifdef REV_ALPHA_CONFIG_H
     uint8_t is_master = !has_usb();
 #endif
 #ifdef REV2_CONFIG_H

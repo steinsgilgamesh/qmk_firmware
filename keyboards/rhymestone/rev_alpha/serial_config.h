@@ -1,13 +1,8 @@
-#ifndef SOFT_SERIAL_CONFIG_H
-#define SOFT_SERIAL_CONFIG_H
+//// #error rev1 serial config
 
+#ifndef SOFT_SERIAL_PIN
 /* Soft Serial defines */
-#define SERIAL_PIN_DDR DDRD
-#define SERIAL_PIN_PORT PORTD
-#define SERIAL_PIN_INPUT PIND
-#define SERIAL_PIN_MASK _BV(PD2)
-#define SERIAL_PIN_INTERRUPT INT2_vect
+#define SOFT_SERIAL_PIN D2
 
 #define SERIAL_USE_MULTI_TRANSACTION
-
-#endif /* SOFT_SERIAL_CONFIG_H */
+#endif

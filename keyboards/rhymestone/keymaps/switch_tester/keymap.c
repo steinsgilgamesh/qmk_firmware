@@ -198,7 +198,7 @@ Convert switchmatrix position to led index
 int at = keys_sum[x] + ((x & 1) ? (3 - y) : y);
 */
 
-#ifdef REV1_CONFIG_H
+#ifdef REV_ALPHA_CONFIG_H
 const uint8_t conv_pos2at[4][5] = {
   {  0,  7,  8, 15, 16},
   {  1,  6,  9, 14, 17},
