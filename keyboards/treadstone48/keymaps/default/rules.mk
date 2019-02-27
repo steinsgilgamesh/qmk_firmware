@@ -26,11 +26,9 @@ LED_ANIMATIONS = yes        # LED animations
 # Other selectable option
 IOS_DEVICE_ENABLE = no      # connect to IOS device (iPad,iPhone)
 LOCAL_GLCDFONT = no         # use each keymaps "font.h" insted of "common/glcdfont.c"
-
-Link_Time_Optimization = yes # if firmware size over limit, try this option
-
 # RHYMESTONE_RIGHTHAND = no   # If connect right hand side of the Rhymestone, set to yes.
 ANGELINA_KEYMAP = no        # If Alfa verstion use set to yes.
+Link_Time_Optimization = no # if firmware size over limit, try this option
 
 ifeq ($(strip $(OLED_ENABLE)), yes)
     OPT_DEFS += -DOLED_ENABLE
@@ -43,7 +41,8 @@ else
 endif
 
 ifeq ($(strip $(LED_ANIMATIONS)), yes)
-    OPT_DEFS += -DRGBLIGHT_ANIMATIONS
+    # OPT_DEFS += -DRGBLIGHT_ANIMATIONS
+    OPT_DEFS += -DLED_ANIMATIONS
 endif
 
 ifeq ($(strip $(IOS_DEVICE_ENABLE)), yes)

@@ -4,7 +4,7 @@
 #   the appropriate keymap folder that will get included automatically
 #
 BOOTMAGIC_ENABLE = no       # Virtual DIP switch configuration(+1000)
-MOUSEKEY_ENABLE = yes        # Mouse keys(+4700)
+MOUSEKEY_ENABLE =  no       # Mouse keys(+4700)
 EXTRAKEY_ENABLE = no        # Audio control and System control(+450)
 CONSOLE_ENABLE = no         # Console for debug(+400)
 COMMAND_ENABLE = no         # Commands for debug and configuration
@@ -19,18 +19,16 @@ SWAP_HANDS_ENABLE = no      # Enable one-hand typing
 TAP_DANCE_ENABLE = yes
 
 # If your custom treadstone48 pcb, you can rewrite to yes.
-OLED_ENABLE = yes            # OLED_ENABLE
+OLED_ENABLE = no            # OLED_ENABLE
 LED_UNDERGLOW_ENABLE = yes  # LED underglow (Enable WS2812 RGB underlight.)
 LED_ANIMATIONS = yes        # LED animations
 
 # Other selectable option
 IOS_DEVICE_ENABLE = no      # connect to IOS device (iPad,iPhone)
 LOCAL_GLCDFONT = no         # use each keymaps "font.h" insted of "common/glcdfont.c"
-
-Link_Time_Optimization = yes # if firmware size over limit, try this option
-
-RHYMESTONE_RIGHTHAND = no  # If connect right hand side of the Rhymestone, set to yes.
-ANGELINA_KEYMAP = no       # If Alfa verstion use set to yes.
+RHYMESTONE_RIGHTHAND = no   # If connect right hand side of the Rhymestone, set to yes.
+ANGELINA_KEYMAP = no        # If Alfa verstion use set to yes.
+Link_Time_Optimization = no # if firmware size over limit, try this option
 
 ifeq ($(strip $(OLED_ENABLE)), yes)
     OPT_DEFS += -DOLED_ENABLE
@@ -43,7 +41,8 @@ else
 endif
 
 ifeq ($(strip $(LED_ANIMATIONS)), yes)
-    OPT_DEFS += -DRGBLIGHT_ANIMATIONS
+    # OPT_DEFS += -DRGBLIGHT_ANIMATIONS
+    OPT_DEFS += -DLED_ANIMATIONS
 endif
 
 ifeq ($(strip $(IOS_DEVICE_ENABLE)), yes)
