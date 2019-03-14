@@ -25,7 +25,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define DEVICE_VER      0x0010
 #define MANUFACTURER    marksard
 #define PRODUCT         treadstone48
-#define DESCRIPTION     Modification RowStaggerd 47+1 Keys Keyboard
+#define DESCRIPTION     Symmetrical staggered 47+1 Keys Keyboard
 
 #define PREVENT_STUCK_MODIFIERS
 #define TAPPING_FORCE_HOLD
