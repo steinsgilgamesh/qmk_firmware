@@ -13,10 +13,13 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef treadstone32_H
-#define treadstone32_H
+#pragma once
 
 #include "quantum.h"
+#include "bootloader.h"
+#ifdef PROTOCOL_LUFA
+#include "lufa.h"
+#endif
 
 #define K_N KC_NO
 
@@ -58,5 +61,3 @@
   KC_##L20, KC_##L21, KC_##L22, KC_##L23, KC_##L24, KC_##L25, KC_##L26, KC_##L27, KC_##L28, KC_##L29, \
                                           KC_##L34, KC_##L35 \
   )
-
-#endif

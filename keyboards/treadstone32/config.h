@@ -54,13 +54,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* define if matrix has ghost (lacks anti-ghosting diodes) */
 //#define MATRIX_HAS_GHOST
 
-/* number of backlight levels */
-
-/* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
-// #define LOCKING_SUPPORT_ENABLE
-/* Locking resynchronize hack */
-// #define LOCKING_RESYNC_ENABLE
-
 /* key combination for magic key command */
 #define IS_COMMAND() ( \
     keyboard_report->mods == (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT)) \
@@ -69,13 +62,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* ws2812 RGB LED */
 #define RGB_DI_PIN D3
 #define RGBLIGHT_TIMER
-//#define RGBLED_NUM 12    // Number of LEDs. see ./keymaps/default/config.h
 #define ws2812_PORTREG  PORTD
 #define ws2812_DDRREG   DDRD
 
-// treadstone32 keyboard RGB LED support
-//#define RGBLIGHT_ANIMATIONS : see ./rules.mk: LED_ANIMATIONS = yes or no
-//    see ./rules.mk: LED_BACK_ENABLE or LED_UNDERGLOW_ENABLE set yes
 #define RGBLED_NUM 6
 
 #ifndef IOS_DEVICE_ENABLE
