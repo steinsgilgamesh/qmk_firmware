@@ -26,7 +26,6 @@ LED_ANIMATIONS = yes        # LED animations
 # Other selectable option
 IOS_DEVICE_ENABLE = no      # connect to IOS device (iPad,iPhone)
 LOCAL_GLCDFONT = no         # use each keymaps "font.h" insted of "common/glcdfont.c"
-Link_Time_Optimization = no # if firmware size over limit, try this option
 
 ifeq ($(strip $(OLED_ENABLE)), yes)
     OPT_DEFS += -DOLED_ENABLE
@@ -49,10 +48,6 @@ endif
 
 ifeq ($(strip $(LOCAL_GLCDFONT)), yes)
     OPT_DEFS += -DLOCAL_GLCDFONT
-endif
-
-ifeq ($(strip $(Link_Time_Optimization)),yes)
-    EXTRAFLAGS += -flto -DUSE_Link_Time_Optimization
 endif
 
 ifeq ($(strip $(ANGELINA_KEYMAP)), yes)

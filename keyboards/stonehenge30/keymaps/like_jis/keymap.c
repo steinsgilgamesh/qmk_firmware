@@ -72,13 +72,13 @@ enum tapdances{
 #define KC_ENSF  LSFT_T(KC_ENT)
 
 // Lower layer mod tap
-#define KC_MNCT  LCTL_T(KC_MINS)
+// #define KC_MNCT  LCTL_T(KC_MINS)
 
 // Raise layer mod tap
 #define KC_F6SF  LSFT_T(KC_F6)
 #define KC_BSSF  LSFT_T(KC_BSLS)
 #define KC_11CT  LCTL_T(KC_F11)
-#define KC_SSCT  LCTL_T(KC_SLSH)
+// #define KC_SSCT  LCTL_T(KC_SLSH)
 #define KC_12AL  LALT_T(KC_F12)
 
 // Layer tap
@@ -107,9 +107,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,----------------------------------------------------------------------------.
           1,     2,     3,     4,     5, _____,     6,     7,     8,     9,     0,\
   //|------+------+------+------+------|------|------+------+------+------+------|
-       LSFT, _____, _____, _____, _____,         LEFT,  DOWN,    UP,  RGHT,  LSFT,\
+       LSFT, XXXXX, XXXXX, XXXXX, XXXXX,         LEFT,  DOWN,    UP,  RGHT,  LSFT,\
   //|------+------+------+------+------|------|------+------+------+------+------|
-       LCTL,  LALT,  LGUI, _____, _____, _____,  LGUI,  MNCT,   DOT \
+       LCTL,  LALT,  LGUI, XXXXX, XXXXX, _____,  COMM,   DOT,  SLSH \
   //|------+------+------+------+------|------|------+------+------|
   ),
 
@@ -119,17 +119,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+------+------+------+------|------|------+------+------+------+------|
        F6SF,    F7,    F8,    F9,   F10,          DEL, XXXXX,  SCLN,  QUOT,  BSSF,\
   //|------+------+------+------+------|------|------+------+------+------+------|
-       11CT,  12AL,   ESC,   TAB, KANJI,  MLAD,  LGUI,  SSCT,    RO \
+       11CT,  12AL,   ESC,   TAB, KANJI,  MLAD, XXXXX,  SLSH,    RO \
   //|------+------+------+------+------|------|------+------+------|
   ),
 
   [_ADJUST] = LAYOUT_kc( \
   //,----------------------------------------------------------------------------.
-        RST,  LRST,  KNRM,  KSWP, XXXXX, _____, XXXXX, XXXXX, XXXXX,  HOME,  PGUP, \
+        RST,  LRST,  KNRM,  KSWP, XXXXX, _____,  HOME,  PGDN,  PGUP,   END, XXXXX, \
   //|------+------+------+------+------|------|------+------+------+------+------|
-       LTOG,  LHUI,  LSAI,  LVAI,  LVAD,         BTN1,  MS_U,  BTN2,   END,  PGDN, \
+       LTOG,  LHUI,  LSAI,  LVAI,  LVAD,         MS_L,  MS_D,  MS_U,  MS_R, XXXXX, \
   //|------+------+------+------+------|------|------+------+------+------+------|
-       LMOD,  LHUD,  LSAD, _____, XXXXX, _____,  MS_L,  MS_D,  MS_R \
+       LMOD,  LHUD,  LSAD, _____, XXXXX, _____,  BTN1,  BTN2, XXXXX \
   //|------+------+------+------+------|------|------+------+------|
   )
 };
