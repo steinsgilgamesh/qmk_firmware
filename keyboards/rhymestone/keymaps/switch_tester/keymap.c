@@ -207,7 +207,7 @@ const uint8_t conv_pos2at[4][5] = {
 };
 #endif
 
-#ifdef REV2_CONFIG_H
+#ifdef REV1_CONFIG_H
 const uint8_t conv_pos2at[4][5] = {
   { 10, 11, 12, 13,  0},
   {  9, 18, 19, 14,  1},
