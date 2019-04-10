@@ -1,5 +1,4 @@
-#ifndef RHYMESTONE_H
-#define RHYMESTONE_H
+#pragma once
 
 #ifdef KEYBOARD_rhymestone_rev_alpha
     #include "rev_alpha.h"
@@ -9,5 +8,3 @@
 #endif
 
 #include "quantum.h"
-
-#endif
