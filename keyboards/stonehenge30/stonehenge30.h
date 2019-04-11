@@ -13,8 +13,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef STONEHENGE30_H
-#define STONEHENGE30_H
+#pragma once
 
 #include "quantum.h"
 
@@ -53,5 +52,3 @@
   KC_##L10, KC_##L11, KC_##L12, KC_##L13, KC_##L14,           KC_##L16, KC_##L17, KC_##L18, KC_##L19, KC_##L1A, \
   KC_##L20, KC_##L21, KC_##L22, KC_##L23, KC_##L24, KC_##L25, KC_##L26, KC_##L27, KC_##L28 \
   )
-
-#endif
