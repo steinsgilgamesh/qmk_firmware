@@ -197,6 +197,18 @@ static inline void render_keymap_status(struct CharacterMatrix *matrix) {
 //   IS_LAYER_ON(layer1) && IS_LAYER_ON(layer2) ? layer_on(layer3) : layer_off(layer3);
 // }
 
+#define TAPPING_LAYER_TERM 150 // Custom LT Tapping term
+uint16_t get_tapping_term(uint16_t keycode) {
+  switch (keycode) {
+    case KC_SPLO:
+      return TAPPING_LAYER_TERM;
+    case KC_BSRA:
+      return TAPPING_LAYER_TERM;
+    default:
+      return TAPPING_TERM;
+  }
+}
+
 int RGB_current_mode;
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
