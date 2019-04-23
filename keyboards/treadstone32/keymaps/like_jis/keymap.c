@@ -103,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+------+------+------+------+------+------+------+------+------|
        F6SF,    F7,    F8,    F9,   F10, XXXXX, XXXXX,  SCLN,  QUOT,  BSSF,\
   //|------+------+------+------+------+------+------+------+------+------|
-       11CT,  12AL,   ESC,   TAB, KANJI,   DEL,  COMM,   DOT,  SLSH,    RO,\
+       11CT,  12AL,   ESC,   TAB, KANJI,   DEL, XXXXX, XXXXX, XXXXX,    RO,\
   //`------+------+------+------+------+------+------+------+------+------'
                                   _____,  MLAD \
   //                            `------|------'
@@ -115,7 +115,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|------+------+------+------+------+------+------+------+------+------|
        LSFT, XXXXX, XXXXX, XXXXX, XXXXX,  LEFT,  DOWN,    UP,  RGHT,  LSFT,\
   //|------+------+------+------+------+------+------+------+------+------|
-       LCTL,  LALT,  LGUI, XXXXX, XXXXX,  HOME,  PGDN,  PGUP,   END, XXXXX,\
+       LCTL,  LALT,  LGUI, XXXXX, XXXXX,  MINS,    RO,  COMM,   DOT,  SSCT,\
   //`------+------+------+------+------+------+------+------+------+------'
                                   _____, _____ \
   //                            `------|------'
