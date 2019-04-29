@@ -62,7 +62,6 @@ enum custom_keycodes {
 #define KC_X_AL  LALT_T(KC_X)
 #define KC_C_GU  LGUI_T(KC_C)
 #define KC_SSCT  LCTL_T(KC_SLSH)
-// #define KC_MNCT  LCTL_T(KC_MINS)
 #define KC_ENSF  LSFT_T(KC_ENT)
 
 // Lower layer mod tap
@@ -134,7 +133,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   )
 };
 
-#define TAPPING_LAYER_TERM 150 // Custom LT Tapping term
 uint16_t get_tapping_term(uint16_t keycode) {
   switch (keycode) {
     case KC_BSLO:
