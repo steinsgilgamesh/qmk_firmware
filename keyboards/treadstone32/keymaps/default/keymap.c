@@ -98,11 +98,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_LOWER] = LAYOUT_kc( \
   //,---------------------------------------------------------------------.
-         F1,    F2,    F3,    F4,    F5,  MINS,   EQL,  JYEN,  LBRC,  RBRC,\
+         F1,    F2,    F3,    F4,    F5,  MINS,   EQL,  LBRC,  RBRC,  BSLS,\
   //|------+------+------+------+------+------+------+------+------+------|
-       F6SF,    F7,    F8,    F9,   F10, XXXXX, XXXXX,  SCLN,  QUOT,  BSSF,\
+       F6SF,    F7,    F8,    F9,   F10, XXXXX, XXXXX, XXXXX,  SCLN,  QUOT,\
   //|------+------+------+------+------+------+------+------+------+------|
-       11CT,  12AL,   ESC,   TAB, KANJI,   DEL, XXXXX, XXXXX, XXXXX,    RO,\
+       11CT,  12AL,   ESC,   TAB, KANJI,   DEL, XXXXX, XXXXX, XXXXX,   GRV,\
   //`------+------+------+------+------+------+------+------+------+------'
                                   _____,  MLAD \
   //                            `------|------'

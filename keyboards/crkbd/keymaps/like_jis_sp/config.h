@@ -20,13 +20,33 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #pragma once
 
-// place overrides here
-#define TAPPING_TERM 200
+//#define USE_MATRIX_I2C
+
+/* Select hand configuration */
+
+#define MASTER_LEFT
+// #define MASTER_RIGHT
+// #define EE_HANDS
+
+#define SSD1306OLED
+
+#define USE_SERIAL_PD2
+
+#undef RGBLED_NUM
+#define RGBLIGHT_ANIMATIONS
+#define RGBLED_NUM 27
+#define RGBLIGHT_LIMIT_VAL 120
+#define RGBLIGHT_HUE_STEP 10
+#define RGBLIGHT_SAT_STEP 17
+#define RGBLIGHT_VAL_STEP 17
+
+
+#ifdef TAPPING_TERM
+#undef TAPPING_TERM
+#endif
+#define TAPPING_TERM 225
 #define PREVENT_STUCK_MODIFIERS
 #define IGNORE_MOD_TAP_INTERRUPT
-
-#define TAPPING_LAYER_TERM 150 // Custom LT Tapping term
-#define TAPPING_TERM_PER_KEY
 
 #ifdef MOUSEKEY_ENABLE
   #undef MOUSEKEY_INTERVAL

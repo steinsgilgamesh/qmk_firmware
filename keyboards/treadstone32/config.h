@@ -68,7 +68,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLED_NUM 6
 
 #ifndef IOS_DEVICE_ENABLE
-  #define RGBLIGHT_LIMIT_VAL 250
+  #define RGBLIGHT_LIMIT_VAL 200
   #define RGBLIGHT_VAL_STEP 17
 #else
   #define RGBLIGHT_LIMIT_VAL 50
