@@ -35,3 +35,13 @@
    //#define RGBLIGHT_EFFECT_RGB_TEST
    //#define RGBLIGHT_EFFECT_ALTERNATING
 #endif
+
+// LED Setting: if you have KUMO you can use RGBLIGHT_ENABLE = yes
+#ifdef RGBLIGHT_ENABLE
+  #define RGB_DI_PIN D0
+  #define RGBLIGHT_TIMER
+  #define ws2812_PORTREG  PORTD
+  #define ws2812_DDRREG   DDRD
+
+  #define RGBLED_NUM 3
+#endif
