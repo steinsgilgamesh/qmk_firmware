@@ -7,8 +7,8 @@ MOUSEKEY_ENABLE =  yes       # Mouse keys(+4700)
 TAP_DANCE_ENABLE = no
 
 # If your custom treadstone32 pcb, you can rewrite to yes.
-RGBLIGHT_ENABLE = no  # LED underglow (Enable WS2812 RGB underlight.)
-LED_ANIMATIONS = no        # LED animations
+RGBLIGHT_ENABLE = yes  # LED underglow (Enable WS2812 RGB underlight.)
+LED_ANIMATIONS = yes        # LED animations
 
 # Other selectable option
 IOS_DEVICE_ENABLE = no      # connect to IOS device (iPad,iPhone)
