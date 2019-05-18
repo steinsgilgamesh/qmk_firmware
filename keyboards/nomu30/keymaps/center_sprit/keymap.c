@@ -31,29 +31,7 @@ enum tapdances{
  };
 
 // Layer Mode aliases
-// #define KC_LOWER LOWER
-// #define KC_RAISE RAISE
-// #define KC_MLLO  MO(_LOWER)
-// #define KC_MLRA  MO(_RAISE)
 #define KC_MLAD  MO(_ADJUST)
-
-#define KC______ KC_TRNS
-#define KC_XXXXX KC_NO
-#define KC_KANJI KANJI
-
-// Adjust layer keys
-#define KC_RST   RESET
-#define KC_LRST  RGBRST
-#define KC_LTOG  RGB_TOG
-#define KC_LHUI  RGB_HUI
-#define KC_LHUD  RGB_HUD
-#define KC_LSAI  RGB_SAI
-#define KC_LSAD  RGB_SAD
-#define KC_LVAI  RGB_VAI
-#define KC_LVAD  RGB_VAD
-#define KC_LMOD  RGB_MOD
-#define KC_KNRM  AG_NORM
-#define KC_KSWP  AG_SWAP
 
 // Base layer mod tap
 #define KC_SLSF  LSFT_T(KC_SLSH)
@@ -81,43 +59,43 @@ qk_tap_dance_action_t tap_dance_actions[] = {
  };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [_BASE] = LAYOUT( \
+  [_BASE] = LAYOUT(
   //,-------------------------------------------------------------------------------------------------------------.
-          KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,  KC_BSLO,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,\
+          KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,  KC_BSLO,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       KC_SLSF,     KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,  KC_ENSF,\
+       KC_SLSF,     KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,  KC_ENSF,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       KC_Z_CT,  KC_X_AL,  KC_C_GU,     KC_V,     KC_B,  KC_SPRA,     KC_N,  KC_M_CT,  KC_CODO\
+       KC_Z_CT,  KC_X_AL,  KC_C_GU,     KC_V,     KC_B,  KC_SPRA,     KC_N,  KC_M_CT,  KC_CODO
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------'
   ),
 
-  [_LOWER] = LAYOUT( \
+  [_LOWER] = LAYOUT(
   //,-------------------------------------------------------------------------------------------------------------.
-         KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5, KC______,  KC_MINS,   KC_EQL,  KC_JYEN,  KC_LBRC,  KC_RBRC,\
+         KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,  _______,  KC_MINS,   KC_EQL,  KC_JYEN,  KC_LBRC,  KC_RBRC,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-      KC______,    KC_F6,    KC_F7,    KC_F8,    KC_F9,   KC_F10, KC_XXXXX, KC_XXXXX,  KC_SCLN,  KC_QUOT,  KC_BSSF,\
+       _______,    KC_F6,    KC_F7,    KC_F8,    KC_F9,   KC_F10,  XXXXXXX,  XXXXXXX,  KC_SCLN,  KC_QUOT,  KC_BSSF,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       KC_11CT,  KC_12AL,   KC_ESC,   KC_TAB, KC_KANJI,  KC_MLAD, KC_XXXXX,  KC_COMM,   KC_DOT\
+       KC_11CT,  KC_12AL,   KC_ESC,   KC_TAB,    KANJI,  KC_MLAD,  XXXXXXX,  KC_COMM,   KC_DOT
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------'
   ),
 
-  [_RAISE] = LAYOUT( \
+  [_RAISE] = LAYOUT(
   //,-------------------------------------------------------------------------------------------------------------.
-          KC_1,     KC_2,     KC_3,     KC_4,     KC_5, KC______,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,\
+          KC_1,     KC_2,     KC_3,     KC_4,     KC_5,  _______,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-      KC______, KC_XXXXX, KC_XXXXX, KC_XXXXX, KC_XXXXX, KC_XXXXX,  KC_LEFT,  KC_DOWN,    KC_UP,  KC_RGHT,  KC_LSFT,\
+       _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LEFT,  KC_DOWN,    KC_UP,  KC_RGHT,  KC_LSFT,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       KC_LCTL,  KC_LALT,  KC_LGUI, KC_XXXXX, KC_XXXXX, KC______, KC_XXXXX,  KC_SLSH,    KC_RO\
+       KC_LCTL,  KC_LALT,  KC_LGUI,  XXXXXXX,  XXXXXXX,  _______,  XXXXXXX,  KC_SLSH,    KC_RO
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------'
   ),
 
-  [_ADJUST] = LAYOUT( \
+  [_ADJUST] = LAYOUT(
   //,-------------------------------------------------------------------------------------------------------------.
-        KC_RST,  KC_LRST,  KC_KNRM,  KC_KSWP, KC_XXXXX, KC______, KC_XXXXX, KC_XXXXX, KC_XXXXX, KC_XXXXX, KC_XXXXX,\
+         RESET,   RGBRST,  AG_NORM,  AG_SWAP,  XXXXXXX,  _______,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-      KC______,  KC_LTOG,  KC_LHUI,  KC_LSAI,  KC_LVAI, KC_XXXXX,  KC_MS_L,  KC_MS_D,  KC_MS_U,  KC_MS_R, KC_XXXXX,\
+       _______,  RGB_TOG,  RGB_HUI,  RGB_SAI,  RGB_VAI,  XXXXXXX,  KC_MS_L,  KC_MS_D,  KC_MS_U,  KC_MS_R,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       KC_LMOD,  KC_LHUD,  KC_LSAD,  KC_LVAD, KC_XXXXX, KC______,  KC_BTN1,  KC_BTN2, KC_XXXXX\
+       RGB_MOD,  RGB_HUD,  RGB_SAD,  RGB_VAD,  XXXXXXX,  _______,  KC_BTN1,  KC_BTN2,  XXXXXXX
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------'
   )
 };
@@ -174,7 +152,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return result;
 }
 
-void matrix_init_user(void) {
+void keyboard_post_init_user(void) {
   #ifdef RGBLIGHT_ENABLE
     RGB_current_mode = rgblight_config.mode;
   #endif
