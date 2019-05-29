@@ -5,17 +5,8 @@
 #
 TAP_DANCE_ENABLE = yes
 
-# If your custom stoneaxe pcb, you can rewrite to yes.
-RGBLIGHT_ENABLE = no  # LED underglow (Enable WS2812 RGB underlight.)
-LED_ANIMATIONS = no        # LED animations
-
 # Other selectable option
 IOS_DEVICE_ENABLE = no      # connect to IOS device (iPad,iPhone)
-
-ifeq ($(strip $(LED_ANIMATIONS)), yes)
-    # OPT_DEFS += -DRGBLIGHT_ANIMATIONS
-    OPT_DEFS += -DLED_ANIMATIONS
-endif
 
 ifeq ($(strip $(IOS_DEVICE_ENABLE)), yes)
     OPT_DEFS += -DIOS_DEVICE_ENABLE

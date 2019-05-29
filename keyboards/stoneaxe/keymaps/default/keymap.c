@@ -3,11 +3,6 @@
 
 extern keymap_config_t keymap_config;
 
-#ifdef RGBLIGHT_ENABLE
-//Following line allows macro to read current RGB settings
-extern rgblight_config_t rgblight_config;
-#endif
-
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
@@ -26,10 +21,10 @@ enum custom_keycodes {
   KANJI,
 };
 
-// enum tapdances{
-//   TD_CODO = 0,
+enum tapdances{
+  TD_CODO = 0,
 //   TD_SLRO,
-// };
+};
 
 // Layer Mode aliases
 #define KC_MLAD  MO(_ADJUST)
@@ -53,13 +48,13 @@ enum custom_keycodes {
 #define KC_SPRA  LT(_RAISE, KC_SPC)
 
 // Tap dance
-// #define KC_CODO  TD(TD_CODO)
+#define KC_CODO  TD(TD_CODO)
 // #define KC_SLRO  TD(TD_SLRO)
 
-// qk_tap_dance_action_t tap_dance_actions[] = {
-//   [TD_CODO] = ACTION_TAP_DANCE_DOUBLE(KC_COMM, KC_DOT),
+qk_tap_dance_action_t tap_dance_actions[] = {
+  [TD_CODO] = ACTION_TAP_DANCE_DOUBLE(KC_COMM, KC_DOT),
 //   [TD_SLRO] = ACTION_TAP_DANCE_DOUBLE(KC_SLSH, KC_RO),
-// };
+};
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT(
@@ -68,10 +63,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
        KC_A_SF,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,  KC_ENSF,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       KC_Z_CT,  KC_X_AL,  KC_C_GU,     KC_V,     KC_B,     KC_N,     KC_M,  KC_COMM,   KC_DOT,  KC_SSCT,
+       KC_Z_CT,  KC_X_AL,  KC_C_GU,     KC_V,     KC_B,     KC_N,     KC_M,  KC_CODO,  KC_BSLO,  KC_SPRA
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
-                                               KC_BSLO,  KC_SPRA
-  //                                        `---------|---------'
   ),
 
   [_LOWER] = LAYOUT(
@@ -80,10 +73,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
        KC_F6SF,    KC_F7,    KC_F8,    KC_F9,   KC_F10,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_SCLN,  KC_QUOT,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       KC_11CT,  KC_12AL,   KC_ESC,   KC_TAB,    KANJI,   KC_DEL,  XXXXXXX,  XXXXXXX,  XXXXXXX,   KC_GRV,
+       KC_11CT,  KC_12AL,   KC_ESC,   KC_TAB,    KANJI,   KC_DEL,  XXXXXXX,   KC_GRV,  _______,  KC_MLAD
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
-                                               _______,  KC_MLAD
-  //                                        `---------|---------'
   ),
 
   [_RAISE] = LAYOUT(
@@ -92,10 +83,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
        KC_LSFT,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LEFT,  KC_DOWN,    KC_UP,  KC_RGHT,  KC_LSFT,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       KC_LCTL,  KC_LALT,  KC_LGUI,  XXXXXXX,  XXXXXXX,  KC_MINS,    KC_RO,  KC_COMM,   KC_DOT,  KC_SSCT,
+       KC_LCTL,  KC_LALT,  KC_LGUI,  XXXXXXX,  XXXXXXX,  KC_MINS,    KC_RO,  KC_COMM,   KC_DOT,  _______
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
-                                               _______,  _______
-  //                                        `---------|---------'
   ),
 
   [_ADJUST] = LAYOUT(
@@ -104,10 +93,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
        RGB_TOG,  RGB_HUI,  RGB_SAI,  RGB_VAI,  XXXXXXX,  KC_MS_L,  KC_MS_D,  KC_MS_U,  KC_MS_R,  XXXXXXX,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       RGB_MOD,  RGB_HUD,  RGB_SAD,  RGB_VAD,  XXXXXXX,  KC_BTN1,  KC_BTN2,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+       RGB_MOD,  RGB_HUD,  RGB_SAD,  RGB_VAD,  XXXXXXX,  KC_BTN1,  KC_BTN2,  XXXXXXX,  _______,  _______
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
-                                               _______,  _______
-  //                                        `---------|---------'
   )
 };
 
@@ -122,7 +109,6 @@ uint16_t get_tapping_term(uint16_t keycode) {
   }
 }
 
-int RGB_current_mode;
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   bool result = false;
@@ -138,33 +124,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         unregister_code(KC_LANG2);
       }
       break;
-    #ifdef RGBLIGHT_ENABLE
-      //led operations - RGB mode change now updates the RGB_current_mode to allow the right RGB mode to be set after reactive keys are released
-      case RGB_MOD:
-          if (record->event.pressed) {
-            rgblight_mode(RGB_current_mode);
-            rgblight_step();
-            RGB_current_mode = rgblight_config.mode;
-          }
-        break;
-      case RGBRST:
-          if (record->event.pressed) {
-            eeconfig_update_rgblight_default();
-            rgblight_enable();
-            RGB_current_mode = rgblight_config.mode;
-          }
-        break;
-    #endif
     default:
       result = true;
       break;
   }
 
   return result;
-}
-
-void keyboard_post_init_user(void) {
-  #ifdef RGBLIGHT_ENABLE
-    RGB_current_mode = rgblight_config.mode;
-  #endif
 }

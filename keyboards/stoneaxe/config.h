@@ -41,8 +41,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *                  ROW2COL = ROW = Anode (+), COL = Cathode (-, marked on diode)
  *
 */
-// #define MATRIX_ROW_PINS { F1, F0, E6, B2, B4, D7, D6, D4 }
-// #define MATRIX_COL_PINS { F4, F5, F6, F7, C7 }
 #define DIRECT_PINS { \
     { B5, B4, D7, D6, D4 }, \
     { F1, F4, D5, D1, D3 }, \
@@ -59,25 +57,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* define if matrix has ghost (lacks anti-ghosting diodes) */
 //#define MATRIX_HAS_GHOST
 
-/* ws2812 RGB LED */
-// #define RGB_DI_PIN D3
-// #define RGBLIGHT_TIMER
-// #define ws2812_PORTREG  PORTD
-// #define ws2812_DDRREG   DDRD
-
-// #define RGBLED_NUM 6
-
-#ifndef IOS_DEVICE_ENABLE
-  #define RGBLIGHT_LIMIT_VAL 200
-  #define RGBLIGHT_VAL_STEP 17
-#else
-  #define RGBLIGHT_LIMIT_VAL 50
-  #define RGBLIGHT_VAL_STEP 4
-#endif
-#define RGBLIGHT_HUE_STEP 10
-#define RGBLIGHT_SAT_STEP 17
-
-#if defined(RGBLIGHT_ENABLE) && !defined(IOS_DEVICE_ENABLE)
+#if !defined(IOS_DEVICE_ENABLE)
 // USB_MAX_POWER_CONSUMPTION value for stoneaxe keyboard
 //  120  RGBoff
 //  330  RGB 6

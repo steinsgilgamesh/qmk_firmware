@@ -2,7 +2,7 @@
 
 ![stoneaxe](https://github.com/marksard/Keyboards/raw/master/_image/20190421-P4210001.jpg)
 
-A 32-key Symmetric staggered keyboard.  
+A 30-key Ortholinear keyboard.  
 
 Keyboard Maintainer: [marksard](https://github.com/marksard)  
 Hardware Supported: The PCBs, controllers supported  
