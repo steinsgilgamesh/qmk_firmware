@@ -62,3 +62,5 @@ BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
 RGBLIGHT_ENABLE = no       # Enable WS2812 RGB underlight.
 LEADER_ENABLE = no
 
+# Enable generic behavior for split boards
+SPLIT_KEYBOARD = yes
