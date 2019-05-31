@@ -17,8 +17,6 @@
 
 #include "quantum.h"
 
-#define K_N KC_NO
-
 /* This a shortcut to help you visually see your layout.
  *
  * The first section contains all of the arguments representing the physical
@@ -36,7 +34,7 @@
     { L05, L06, L07, L08, L09 }, \
     { L15, L16, L17, L18, L19 }, \
     { L25, L26, L27, L28, L29 }, \
-    { L00, L01, L02, L03, L04 }, \
-    { L10, L11, L12, L13, L14 }, \
-    { L20, L21, L22, L23, L24 }  \
+    { L24, L23, L22, L21, L20 }, \
+    { L14, L13, L12, L11, L10 }, \
+    { L04, L03, L02, L01, L00 }  \
   }
