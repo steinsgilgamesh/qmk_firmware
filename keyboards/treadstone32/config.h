@@ -63,7 +63,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGBLED_NUM 6
 
 #ifndef IOS_DEVICE_ENABLE
-  #define RGBLIGHT_LIMIT_VAL 200
+  #define RGBLIGHT_LIMIT_VAL 255
   #define RGBLIGHT_VAL_STEP 17
 #else
   #define RGBLIGHT_LIMIT_VAL 50
@@ -77,7 +77,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //  120  RGBoff
 //  330  RGB 6
 //  300  RGB 32
-  #define USB_MAX_POWER_CONSUMPTION 400
+  #define USB_MAX_POWER_CONSUMPTION 500
 #else
   // fix iPhone and iPad power adapter issue
   // iOS device need lessthan 100
