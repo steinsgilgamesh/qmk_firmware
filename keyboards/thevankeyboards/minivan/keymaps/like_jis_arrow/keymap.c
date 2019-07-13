@@ -36,11 +36,10 @@ enum tapdances{
 // Layer Mode aliases
 #define KC_TBSF  LSFT_T(KC_TAB)
 #define KC_ROSF  RSFT_T(KC_RO)
-#define KC_SLSF  RSFT_T(KC_SLSH)
 #define KC_ALAP  LALT_T(KC_APP)
 
 // Layer tap
-#define KC_ENLO  LT(_LOWER, KC_ENT)
+#define KC_BSLO  LT(_LOWER, KC_BSPC)
 #define KC_SPRA  LT(_RAISE, KC_SPC)
 #define KC_MLAD  MO(_ADJUST)
 
@@ -53,17 +52,17 @@ qk_tap_dance_action_t tap_dance_actions[] = {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_arrow(
   //,-----------------------------------------------------------------------------------------------------------.
-  //      Esc        Q        W        E        R        T        Y        U        I        O        P BackSpace
-       KC_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSPC,
+  //      Esc        Q        W        E        R        T        Y        U        I        O        P        -
+       KC_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_MINS,
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------|
-  //Tab/Shift        A        S        D        F        G        H        J        K        L      ;/:        -
-      KC_TBSF,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L, KC_SCCL, KC_MINS,
+  //Tab/Shift        A        S        D        F        G        H        J        K        L      ;/:    Enter
+      KC_TBSF,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L, KC_SCCL,  KC_ENT,
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------|
-  //    Shift        Z        X        C        V        B        N        M        ,        .       Up        /
-      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT,   KC_UP, KC_SLSF,
+  //    Shift        Z        X        C        V        B        N        M        ,        .        /      yen
+      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_ROSF,
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------|
-  //     Ctrl      Alt GUI/Comm                Enter/Lower       Space/Raise     Menu     Left     Down    Right
-      KC_LCTL, KC_LALT, KC_LGUI,                   KC_ENLO,          KC_SPRA, KC_ALAP, KC_LEFT, KC_DOWN, KC_RGHT
+  //     Ctrl      Alt GUI/Comm            BackSpace/Lower       Space/Raise     Menu      Alt     Menu     Ctrl
+      KC_LCTL, KC_LALT, KC_LGUI,                   KC_BSLO,          KC_SPRA, KC_RGUI, KC_RALT,  KC_APP, KC_RCTL
   //`-----------------------------------------------------------------------------------------------------------'
   ),
 
@@ -76,10 +75,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10, XXXXXXX, XXXXXXX, KC_SCLN, KC_QUOT, KC_BSLS, _______,
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------|
   //               F11      F12        Kana/Kanji    Enter   Delete
-      _______,  KC_F11,  KC_F12, XXXXXXX,   KANJI,  KC_ENT,  KC_DEL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_ROSF,
+      _______,  KC_F11,  KC_F12, XXXXXXX,   KANJI,  KC_ENT,  KC_DEL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------|
   //                                                                  Adjust
-      _______, _______, _______,                   _______,          KC_MLAD, _______, XXXXXXX, XXXXXXX, XXXXXXX
+      _______, _______, _______,                   _______,          KC_MLAD, _______, _______, _______, _______
   //`-----------------------------------------------------------------------------------------------------------'
   ),
 
@@ -94,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //                                                                                ,        .        /      yen
       _______, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_COMM,  KC_DOT, KC_SLSH, KC_ROSF,
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------|
-      _______, _______, _______,                   _______,          _______, _______, XXXXXXX, XXXXXXX, XXXXXXX
+      _______, _______, _______,                   _______,          _______, _______, _______, _______, _______
   //`-----------------------------------------------------------------------------------------------------------'
   ),
 
@@ -109,7 +108,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //           LED Mode Hue/Saturation/Value Decrement      Mouse Button Left Right
       _______, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, KC_BTN1, KC_BTN2, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------|
-      _______, _______, _______,                   _______,          _______, _______, XXXXXXX, XXXXXXX, XXXXXXX
+      _______, _______, _______,                   _______,          _______, _______, _______, _______, _______
   //`-----------------------------------------------------------------------------------------------------------'
   )
 };
@@ -117,7 +116,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 #define TAPPING_LAYER_TERM 150 // Custom LT Tapping term
 uint16_t get_tapping_term(uint16_t keycode) {
   switch (keycode) {
-    case KC_ENLO:
+    case KC_BSLO:
       return TAPPING_LAYER_TERM;
     case KC_SPRA:
       return TAPPING_LAYER_TERM;
