@@ -17,6 +17,8 @@
 
 #include "quantum.h"
 
+#define K_N KC_NO
+
 /* This a shortcut to help you visually see your layout.
  *
  * The first section contains all of the arguments representing the physical
@@ -26,15 +28,16 @@
  * represents the switch matrix.
  */
 #define LAYOUT( \
-  L01, L02, L03, L04, L05, R01, R02, R03, R04, R05, \
-  L11, L12, L13, L14, L15, R11, R12, R13, R14, R15, \
-  L21, L22, L23, L24, L25, R21, R22, R23, R24, R25  \
-  ) \
-  { \
-    { L05, L04, L03, L02, L01 }, \
-    { L15, L14, L13, L12, L11 }, \
-    { L25, L24, L23, L22, L21 }, \
-    { R21, R22, R23, R24, R25 }, \
-    { R11, R12, R13, R14, R15 }, \
-    { R01, R02, R03, R04, R05 }  \
-  }
+    k00, k01, k02, k03, k04, k05, k06, k07, k08, k09, k0a, k0b, k0c, \
+    k10, k11, k12, k13, k14, k15, k16, k17, k18, k19, k1a, k1b, k1c, \
+    k20, k21, k22, k23, k24, k25, k26, k27, k28, k29, k2a, k2b, k2c, \
+    k30, k31, k32, k33, k34, k35, k36, k37, k38, k39, k3a, k3b, k3c, \
+    k40,  k41,  k42,   k43,   k44,    k45,    k49,  k4a,  k4b,  k4c \
+    ) \
+    { \
+        {k00, k01, k02, k03, k04, k05, k06, k07, k08, k09, k0a, k0b, k0c}, \
+        {k10, k11, k12, k13, k14, k15, k16, k17, k18, k19, k1a, k1b, k1c}, \
+        {k20, k21, k22, k23, k24, k25, k26, k27, k28, k29, k2a, k2b, k2c}, \
+        {k30, k31, k32, k33, k34, k35, k36, k37, k38, k39, k3a, k3b, k3c}, \
+        {k40, k41, k42, k43, k44, k45, K_N, K_N, K_N, k49, k4a, k4b, k4c} \
+    }
