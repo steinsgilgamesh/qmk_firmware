@@ -23,8 +23,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define VENDOR_ID 0xFEED
 #define PRODUCT_ID 0xDFA7
 #define DEVICE_VER 0x0001
-#define MANUFACTURER % YOUR_NAME %
-#define PRODUCT % KEYBOARD %
+#define MANUFACTURER marksard
+#define PRODUCT Treadstone60
 #define DESCRIPTION 60 percent Symmetrical staggered Keyboard
 
 /* key matrix size */
@@ -92,6 +92,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* define if matrix has ghost (lacks anti-ghosting diodes) */
 //#define MATRIX_HAS_GHOST
+
+/* ws2812 RGB LED */
+#define RGB_DI_PIN D3
+#define RGBLIGHT_TIMER
+#define ws2812_PORTREG  PORTD
+#define ws2812_DDRREG   DDRD
+
+#define RGBLED_NUM 6
+
+#define RGBLIGHT_LIMIT_VAL 255
+#define RGBLIGHT_VAL_STEP 17
+#define RGBLIGHT_HUE_STEP 10
+#define RGBLIGHT_SAT_STEP 17
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
 #define LOCKING_SUPPORT_ENABLE
