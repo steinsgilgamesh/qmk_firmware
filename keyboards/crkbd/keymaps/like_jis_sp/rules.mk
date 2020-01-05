@@ -4,7 +4,7 @@
 #   the appropriate keymap folder that will get included automatically
 #
 BOOTMAGIC_ENABLE = no       # Virtual DIP switch configuration(+1000)
-MOUSEKEY_ENABLE = yes        # Mouse keys(+4700)
+MOUSEKEY_ENABLE = no        # Mouse keys(+4700)
 EXTRAKEY_ENABLE = no        # Audio control and System control(+450)
 CONSOLE_ENABLE = no         # Console for debug(+400)
 COMMAND_ENABLE = no         # Commands for debug and configuration
@@ -14,20 +14,15 @@ MIDI_ENABLE = no            # MIDI controls
 AUDIO_ENABLE = no           # Audio output on port C6
 UNICODE_ENABLE = no         # Unicode
 BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
-RGBLIGHT_ENABLE = yes       # Enable WS2812 RGB underlight.
+RGBLIGHT_ENABLE = no       # Enable WS2812 RGB underlight.
 SWAP_HANDS_ENABLE = no      # Enable one-hand typing
 TAP_DANCE_ENABLE = yes
+RGB_MATRIX_ENABLE = WS2812
 
 # Do not enable SLEEP_LED_ENABLE. it uses the same timer as BACKLIGHT_ENABLE
 SLEEP_LED_ENABLE = no    # Breathing sleep LED during USB suspend
 
-LED_ANIMATIONS = yes        # LED animations
-
 Link_Time_Optimization = yes # if firmware size over limit, try this option
-
-ifeq ($(strip $(LED_ANIMATIONS)), yes)
-    OPT_DEFS += -DLED_ANIMATIONS
-endif
 
 ifeq ($(strip $(Link_Time_Optimization)),yes)
     EXTRAFLAGS += -flto -DUSE_Link_Time_Optimization
