@@ -1,14 +1,21 @@
+/* Copyright 2020 marksard
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
 #include QMK_KEYBOARD_H
 #include "keymap_jp.h"
-#include "bootloader.h"
-#ifdef PROTOCOL_LUFA
-#include "lufa.h"
-#include "split_util.h"
-#endif
-#ifdef SSD1306OLED
-  #include "ssd1306.h"
-#endif
-#include "../common/oled_helper.h"
+#include "./common/oled_helper.h"
 
 extern keymap_config_t keymap_config;
 
@@ -16,8 +23,6 @@ extern keymap_config_t keymap_config;
 //Following line allows macro to read current RGB settings
 extern rgblight_config_t rgblight_config;
 #endif
-
-extern uint8_t is_master;
 
 bool RGBAnimation = false; //Flag for LED Layer color Refresh.
 
@@ -102,13 +107,13 @@ static KEY_LIGHT_BUF keybufs[256];
 static uint8_t keybuf_begin, keybuf_end;
 #endif
 
-int RGB_current_mode;
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   UPDATE_KEY_STATUS(keycode, record);
 
   #ifdef RGBLIGHT_ENABLE
     int row = record->event.key.row;
+    int is_master = is_keyboard_master();
     if (record->event.pressed && ((row < 4 && is_master) || (row >= 4 && !is_master))) {
       int end = keybuf_end;
       keybufs[end].col = (char)(record->event.key.col);
@@ -131,28 +136,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
           RGBAnimation = false;
           eeconfig_update_rgblight_default();
           rgblight_enable();
-          RGB_current_mode = rgblight_config.mode;
         }
         break;
       case RGB1:
         if (record->event.pressed) {
           RGBAnimation = true;
           rgblight_mode(8);
-          RGB_current_mode = rgblight_config.mode;
         }
         break;
       case RGB2:
         if (record->event.pressed) {
           RGBAnimation = true;
           rgblight_mode(14);
-          RGB_current_mode = rgblight_config.mode;
         }
         break;
       case RGB3:
         if (record->event.pressed) {
           RGBAnimation = true;
           rgblight_mode(21);
-          RGB_current_mode = rgblight_config.mode;
         }
         break;
     #endif
@@ -164,16 +165,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return result;
 }
 
-void matrix_init_user(void) {
-  #ifdef RGBLIGHT_ENABLE
-    RGB_current_mode = rgblight_config.mode;
-  #endif
-
-  INIT_OLED();
-}
-
 // LED Effect
 #ifdef RGBLIGHT_ENABLE
+#include <stdio.h>
+#include <string.h>
+
+#define MIN(a,b) (((a)<(b))?(a):(b))
+#define MAX(a,b) (((a)>(b))?(a):(b))
+
 /*
 keyswitches matrix
 cols = 5, rows = 4, {x, y}
@@ -205,9 +204,7 @@ const uint8_t conv_pos2at[4][5] = {
   {  2,  5, 10, 13, 18},
   {  3,  4, 11, 12, 19}
 };
-#endif
-
-#ifdef REV1_CONFIG_H
+#else
 const uint8_t conv_pos2at[4][5] = {
   { 10, 11, 12, 13,  0},
   {  9, 18, 19, 14,  1},
@@ -272,9 +269,6 @@ void led_ripple_effect(char r, char g, char b) {
 #endif
 
 void matrix_scan_user(void) {
-  #ifdef SSD1306OLED
-    iota_gfx_task();  // this is what updates the display continuously
-  #endif
 
   #ifdef RGBLIGHT_ENABLE
     if(!RGBAnimation){
@@ -283,36 +277,26 @@ void matrix_scan_user(void) {
   #endif
 }
 
-//SSD1306 OLED update loop, make sure to add #define SSD1306OLED in config.h
-#ifdef SSD1306OLED
-static inline void matrix_update(struct CharacterMatrix *dest,
-                          const struct CharacterMatrix *source) {
-  if (memcmp(dest->display, source->display, sizeof(dest->display))) {
-    memcpy(dest->display, source->display, sizeof(dest->display));
-    dest->dirty = true;
-  }
-}
+#ifdef OLED_DRIVER_ENABLE
 
-static inline void render_status(struct CharacterMatrix *matrix) {
+
+static inline void render_status(void) {
 
   UPDATE_LED_STATUS();
-  RENDER_LED_STATUS(matrix);
-  RENDER_KEY_STATUS(matrix);
+  RENDER_LED_STATUS();
+  RENDER_KEY_STATUS();
 }
 
-void iota_gfx_task_user(void) {
-  struct CharacterMatrix matrix;
+oled_rotation_t oled_init_user(oled_rotation_t rotation) {
 
-  #if DEBUG_TO_SCREEN
-    if (debug_enable) {
-      return;
-    }
-  #endif
+  if (is_keyboard_master())
+    return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
+  return rotation;
+}
 
-  matrix_clear(&matrix);
-  render_status(&matrix);
+void oled_task_user(void) {
 
-  matrix_update(&display, &matrix);
+    render_status();
 }
 
 #endif
