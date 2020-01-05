@@ -60,6 +60,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #define USE_SERIAL
 #define SOFT_SERIAL_PIN D2
+#define SPLIT_HAND_PIN F7
 
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5
