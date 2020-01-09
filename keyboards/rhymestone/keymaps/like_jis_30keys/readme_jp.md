@@ -5,6 +5,54 @@
 　Rhymestoneの最上段を未使用にして30キーのキーボードに挑戦するためのキーマップです  
 　記号類は日本語JISベースの配置になっています  
 
+## rules.mkの設定項目
+
+rules.mkにはコンパイル時に機能を取捨選択する設定項目があります。yesにするとほとんどはバイナリサイズが増えますので、適宜設定してください。  
+
+### MOUSEKEY_ENABLE
+
+マウスカーソルをキーボードから操作出来るマウスキーを使う場合はyes。  
+いくつかのキーマップにはAdjustレイヤーにマウスカーソルを操作するキーが割り当てられています。  
+
+MOUSEKEY_ENABLE = no | yes
+
+### TAP_DANCE_ENABLE
+
+タップダンス機能を使用する場合はyes。  
+
+TAP_DANCE_ENABLE = no | yes
+
+### RGBLIGHT_ENABLE
+
+バックライト、アンダーグロー用としてはんだ付けしたRGBのLEDがあるならならyes。  
+Adjustレイヤーでパラメータを制御出来るようになっています。  
+RGBLIGHT_ENABLE = no | yes
+
+### OLED_DRIVER_ENABLE
+
+OLEDモジュールを取り付けているならyes。  
+OLEDモジュールを取り付けずにこの項目をyesにしている場合、キー検出のパフォーマンスが落ちて正しくキーを拾えないことがあるので注意してください。  
+
+OLED_DRIVER_ENABLE = no | yes
+
+### LTO_ENABLE
+
+古い互換機能を削除したりなどのビルドオプションを改善します。バイナリサイズが大きくなってビルドでエラーが出た場合にyesとするとファイルサイズが小さくなりエラーがでなくなることがあります。  
+
+LTO_ENABLE = no | yes
+
+## config.h
+
+### USE_HASHTWENTY
+
+Rhymestoneのα板のファームを作成する場合は定義してください。  
+#define USE_HASHTWENTY  
+
+### MASTER_RIGHT
+
+USBを右側に着けたい場合は定義してください。  
+#define MASTER_RIGHT
+
 ## キーマップの見かた
 
 qmk_firmware\tmk_core\common\keycode.h  

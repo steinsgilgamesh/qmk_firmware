@@ -1,4 +1,3 @@
-SWAP_HANDS_ENABLE = no      # Enable one-hand typing
 MOUSEKEY_ENABLE = no       # Mouse keys
 TAP_DANCE_ENABLE = no
 
