@@ -20,31 +20,89 @@
 // You can leave any or all of these undefined.
 // These are only required if you want to perform custom actions.
 
-/*
-void matrix_init_kb(void) {
-    // put your keyboard start-up code here
-    // runs once when the firmware starts up
+#ifdef RGB_MATRIX_ENABLE
+led_config_t g_led_config = { {
+    {  10,  11,  12,  13,   0 },
+    {   9,  18,  19,  14,   1 },
+    {   8,  17,  16,  15,   2 },
+    {   7,   6,   5,   4,   3 },
+    {  30,  31,  32,  33,  20 },
+    {  29,  38,  39,  34,  21 },
+    {  28,  37,  36,  35,  22 },
+    {  27,  26,  25,  24,  23 }
+}, {
+    { 100,   0 }, { 100,  21 }, { 100,  43 }, { 100,  64 },
+    {  75,  64 }, {  50,  64 }, {  25,  64 }, {   0,  64 },
+    {   0,  43 }, {   0,  21 }, {   0,   0 },
+    {  25,   0 }, {  50,   0 }, {  75,   0 },
+    {  75,  21 }, {  75,  43 },
+    {  50,  43 }, {  25,  43 },
+    {  25,  21 }, {  50,  21 },
+    { 125,   0 }, { 125,  21 }, { 125,  43 }, { 125,  64 },
+    { 150,  64 }, { 175,  64 }, { 200,  64 }, { 225,  64 },
+    { 225,  43 }, { 225,  21 }, { 225,   0 },
+    { 200,   0 }, { 175,   0 }, { 150,   0 },
+    { 150,  21 }, { 150,  43 },
+    { 175,  43 }, { 200,  43 },
+    { 200,  21 }, { 150,  21 }
+}, {
+    4, 4, 4, 1,
+    1, 1, 1, 1,
+    4, 4, 4, 4,
+    4, 4, 4, 4,
+    4, 4, 4, 4,
+    4, 4, 4, 1,
+    1, 1, 1, 1,
+    4, 4, 4, 4,
+    4, 4, 4, 4,
+    4, 4, 4, 4
+} };
+#endif
 
+__attribute__((weak))
+void matrix_init_user(void) {}
+
+void matrix_init_kb(void) {
+
+#ifdef RGB_MATRIX_ENABLE
+    // if (!is_keyboard_master()) {
+    //     g_led_config = (led_config_t){ {
+    //         {  30,  31,  32,  33,  20 },
+    //         {  29,  38,  39,  34,  21 },
+    //         {  28,  37,  36,  35,  22 },
+    //         {  27,  26,  25,  24,  23 },
+    //         {  10,  11,  12,  13,   0 },
+    //         {   9,  18,  19,  14,   1 },
+    //         {   8,  17,  16,  15,   2 },
+    //         {   7,   6,   5,   4,   3 }
+    //     }, {
+    //         { 125,   0 }, { 125,  21 }, { 125,  43 }, { 125,  64 },
+    //         { 150,  64 }, { 175,  64 }, { 200,  64 }, { 225,  64 },
+    //         { 225,  43 }, { 225,  21 }, { 225,   0 },
+    //         { 200,   0 }, { 175,   0 }, { 150,   0 },
+    //         { 150,  21 }, { 150,  43 },
+    //         { 175,  43 }, { 200,  43 },
+    //         { 200,  21 }, { 150,  21 },
+    //         { 100,   0 }, { 100,  21 }, { 100,  43 }, { 100,  64 },
+    //         {  75,  64 }, {  50,  64 }, {  25,  64 }, {   0,  64 },
+    //         {   0,  43 }, {   0,  21 }, {   0,   0 },
+    //         {  25,   0 }, {  50,   0 }, {  75,   0 },
+    //         {  75,  21 }, {  75,  43 },
+    //         {  50,  43 }, {  25,  43 },
+    //         {  25,  21 }, {  50,  21 }
+    //     }, {
+    //         4, 4, 4, 1,
+    //         1, 1, 1, 1,
+    //         4, 4, 4, 4,
+    //         4, 4, 4, 4,
+    //         4, 4, 4, 4,
+    //         4, 4, 4, 1,
+    //         1, 1, 1, 1,
+    //         4, 4, 4, 4,
+    //         4, 4, 4, 4,
+    //         4, 4, 4, 4
+    //     } };
+    // }
+#endif
     matrix_init_user();
 }
-
-void matrix_scan_kb(void) {
-    // put your looping keyboard code here
-    // runs every cycle (a lot)
-
-    matrix_scan_user();
-}
-
-bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
-    // put your per-action keyboard code here
-    // runs for every action, just before processing by the firmware
-
-    return process_record_user(keycode, record);
-}
-
-bool led_update_kb(led_t led_state) {
-    // put your keyboard LED indicator (ex: Caps Lock LED) toggling code here
-
-    return led_update_user(led_state);
-}
-*/
