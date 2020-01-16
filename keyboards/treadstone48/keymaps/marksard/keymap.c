@@ -17,14 +17,10 @@
 #include "keymap_jp.h"
 #include "../common/oled_helper.h"
 
-extern keymap_config_t keymap_config;
-
 #ifdef RGBLIGHT_ENABLE
 //Following line allows macro to read current RGB settings
 extern rgblight_config_t rgblight_config;
 #endif
-
-extern uint8_t is_master;
 
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
@@ -45,14 +41,16 @@ enum custom_keycodes {
   RGBRST
 };
 
-enum tapdances{
-  TD_SCCL = 0,
-  TD_SLRO,
-};
+// enum tapdances{
+//   TD_SCCL = 0,
+//   TD_SLRO,
+// };
 
 // Layer Mode aliases
 #define _____ KC_TRNS
 #define XXXXX KC_NO
+
+#define KC_MLAD  MO(_ADJUST)
 
 // #define KC_TBSF  LSFT_T(KC_TAB)
 // #define KC_SPSF  LSFT_T(KC_SPC)
@@ -60,24 +58,29 @@ enum tapdances{
 #define KC_JEQL  LSFT(KC_MINS)
 #define KC_ENSF  RSFT_T(KC_ENT)
 
-#define KC_SCCL  TD(TD_SCCL)
-#define KC_SLRO  TD(TD_SLRO)
+// Layer tap
+#define KC_BSLO  LT(_LOWER, KC_BSPC)
+#define KC_SPRA  LT(_RAISE, KC_SPC)
 
-qk_tap_dance_action_t tap_dance_actions[] = {
-  [TD_SCCL] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, KC_QUOT),
-  [TD_SLRO] = ACTION_TAP_DANCE_DOUBLE(KC_SLSH, KC_RO),
-};
+// Tap dance
+// #define KC_SCCL  TD(TD_SCCL)
+// #define KC_SLRO  TD(TD_SLRO)
+
+// qk_tap_dance_action_t tap_dance_actions[] = {
+//   [TD_SCCL] = ACTION_TAP_DANCE_DOUBLE(KC_SCLN, KC_QUOT),
+//   [TD_SLRO] = ACTION_TAP_DANCE_DOUBLE(KC_SLSH, KC_RO),
+// };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_base( \
   //,--------------------------------------------------------------------------------------------------------------------.
        KC_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,          KC_MINS,\
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+-----------------|
-       KC_TAB,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L, KC_SCCL,          KC_ENSF,\
+       KC_TAB,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN,          KC_ENSF,\
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------+--------|
-      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLRO,   KC_UP,         \
+      KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH,   KC_UP,         \
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------+--------|
-     KC_LCTRL, KC_LALT, KC_LGUI,   LOWER,          KC_BSPC,           KC_SPC,   RAISE, KC_ALAP, KC_LEFT, KC_DOWN, KC_RGHT,\
+     KC_LCTRL, KC_LALT, KC_LGUI,   LOWER,          KC_BSLO,          KC_SPRA,   RAISE, KC_ALAP, KC_LEFT, KC_DOWN, KC_RGHT,\
   //`-------------------------------------------------------------------------------------------------------------------'
        KC_DEL \
   // ExtraKey: Split backspace key or it is below the enter key.
@@ -87,11 +90,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,--------------------------------------------------------------------------------------------------------------------.
         _____,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5, KC_MINS,  KC_EQL, KC_JYEN, KC_LBRC, KC_RBRC,           KC_DEL,\
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+-----------------|
-        _____,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,   XXXXX,   XXXXX, KC_SCLN, KC_QUOT, KC_BSLS,            _____,\
+        _____,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,   XXXXX,   XXXXX,   XXXXX, KC_QUOT, KC_BSLS,            _____,\
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------+--------|
-        _____,  KC_F11,  KC_F12,   XXXXX,   KANJI,  KC_ENT,   XXXXX, KC_COMM,  KC_DOT, KC_SLSH,   KC_RO, KC_PGUP,         \
+        _____,  KC_F11,  KC_F12,   XXXXX,   XXXXX,   KANJI,  KC_DEL,   XXXXX,   XXXXX,   XXXXX,   KC_RO, KC_PGUP,         \
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------+--------|
-        _____,   _____,   _____,   _____,           KC_DEL,            _____,   _____,   XXXXX, KC_HOME, KC_PGDN,  KC_END,\
+        _____,   _____,   _____,   _____,           KC_DEL,          KC_MLAD,   _____,   XXXXX, KC_HOME, KC_PGDN,  KC_END,\
   //`-------------------------------------------------------------------------------------------------------------------'
       XXXXX \
   // ExtraKey: Split backspace key or it is below the enter key.
@@ -101,9 +104,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,--------------------------------------------------------------------------------------------------------------------.
         _____,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,          KC_MINS,\
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+-----------------|
-        _____,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,            _____,\
+        _____,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX, KC_LEFT, KC_DOWN,   KC_UP, KC_RGHT,   XXXXX,            _____,\
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------+--------|
-        _____,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX, KC_COMM,  KC_DOT, KC_SLRO,   XXXXX,         \
+        _____,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX, KC_MINS,   KC_RO, KC_COMM,  KC_DOT, KC_BSLS,   XXXXX,         \
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------+--------|
         _____,   _____,   _____,   _____,            _____,            _____,   _____,   XXXXX,   XXXXX,   XXXXX,   XXXXX,\
   //`-------------------------------------------------------------------------------------------------------------------'
@@ -113,9 +116,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_ADJUST] = LAYOUT_base( \
   //,--------------------------------------------------------------------------------------------------------------------.
-        XXXXX,   RESET,  RGBRST, AG_NORM, AG_SWAP,   XXXXX,   XXXXX, KC_WH_L, KC_WH_U, KC_HOME, KC_PGUP,            XXXXX,\
+        XXXXX,   RESET,  RGBRST, AG_NORM, AG_SWAP,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,   XXXXX,            XXXXX,\
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+-----------------|
-        XXXXX, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI,   XXXXX,   XXXXX, KC_WH_R, KC_WH_D,  KC_END, KC_PGDN,            XXXXX,\
+        XXXXX, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI,   XXXXX, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R,   XXXXX,            XXXXX,\
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------+--------|
         _____, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD,   XXXXX, KC_BTN1, KC_BTN2,   XXXXX,   XXXXX,   XXXXX, KC_MS_U,         \
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------+--------|
