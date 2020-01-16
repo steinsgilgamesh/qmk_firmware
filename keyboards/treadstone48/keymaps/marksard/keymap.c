@@ -214,6 +214,17 @@ void oled_task_user(void) {
 
 #endif
 
+uint16_t get_tapping_term(uint16_t keycode) {
+  switch (keycode) {
+    case KC_BSLO:
+      return TAPPING_LAYER_TERM;
+    case KC_SPRA:
+      return TAPPING_LAYER_TERM;
+    default:
+      return TAPPING_TERM;
+  }
+}
+
 static inline void update_change_layer(bool pressed, uint8_t layer1, uint8_t layer2, uint8_t layer3) {
 
   pressed ? layer_on(layer1) : layer_off(layer1);
