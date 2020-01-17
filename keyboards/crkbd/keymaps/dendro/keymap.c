@@ -33,48 +33,47 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
   KC_ESC,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,                         KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSPC, \
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-  KC_TAB,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_L,   KC_UP,  KC_ENT, \
+  KC_TAB,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,                         KC_H,    KC_J,    KC_K,    KC_UP, KC_L,   KC_ENT, \
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-  KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_LEFT,  KC_RGHT, KC_DOWN,   NAVI, \
+  KC_LSFT,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                         KC_N,    KC_M, KC_LEFT,  KC_DOWN, KC_RGHT, KC_RGUI, \
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-  FUNC, KC_LCTL,  SYMBOL,     KC_SPC,  KC_RGUI, KC_RALT \
+  KC_LALT, KC_LCTL,  SYMBOL,     KC_SPC, NAVI,  KC_RCTL \
   //`--------------------------'  `--------------------------'
-
                     ),
 
   [_SYMBOL] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-  KC_ESC,    KC_7,    KC_8,    KC_9,    KC_0, XXXXXXX,                      XXXXXXX, KC_LBRC, KC_RBRC, KC_MINS,  KC_EQL, KC_BSPC, \
+  KC_ESC,    KC_7,    KC_8,    KC_9,    KC_0,     XXXXXXX,                      XXXXXXX, KC_LBRC, KC_RBRC, KC_MINS,  KC_EQL, KC_BSPC, \
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-  KC_TAB,    KC_4,    KC_5,    KC_6, XXXXXXX, XXXXXXX,                      XXXXXXX,  KC_GRV, KC_SCLN, KC_QUOT, KC_BSLS,  KC_ENT, \
+  KC_TAB,    KC_4,    KC_5,    KC_6, XXXXXXX, XXXXXXX,                          XXXXXXX,  KC_GRV, KC_SCLN, KC_QUOT, KC_BSLS,  KC_ENT, \
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-  KC_LSFT,    KC_1,    KC_2,    KC_3, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, KC_COMM,  KC_DOT, KC_SLSH, _______, \
+  KC_LSFT,    KC_1,    KC_2,    KC_3, XXXXXXX, XXXXXXX,                         XXXXXXX, XXXXXXX, KC_COMM,  KC_DOT, KC_SLSH, KC_RGUI, \
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-  _______, KC_LCTL, _______,     KC_SPC,  KC_RGUI, KC_RALT \
+  KC_LALT, KC_LCTL, _______,      KC_SPC, _______,    KC_RCTL \
   //`--------------------------'  `--------------------------'
                     ),
 
   [_NAVI] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-  KC_ESC, KC_WH_L, KC_MS_U, KC_WH_R, KC_WH_U, XXXXXXX,                      XXXXXXX, KC_PGUP, C(KC_LEFT), KC_UP, C(KC_RGHT), KC_BSPC, \
+  KC_ESC,   KC_F9,  KC_F10,  KC_F11,  KC_F12, KC_PSCR,                          XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_BSPC, \
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-  KC_TAB, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, XXXXXXX,                      XXXXXXX, KC_PGDN, KC_LEFT, KC_DOWN, KC_RGHT,  KC_ENT, \
+  KC_TAB,   KC_F5,   KC_F6,   KC_F7,   KC_F8,  KC_DEL,                          XXXXXXX, XXXXXXX, KC_HOME, _______, KC_END,  KC_ENT, \
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-  KC_LSFT, KC_ACL0, KC_ACL1, KC_ACL2, XXXXXXX, XXXXXXX,                      XXXXXXX, XXXXXXX, KC_HOME, XXXXXXX,  KC_END, _______, \
+  KC_LSFT,   KC_F1,   KC_F2,   KC_F3,   KC_F4,  KC_INS,                         XXXXXXX, XXXXXXX, C(KC_LEFT), _______, C(KC_RGHT), KC_RGUI, \
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-  KC_LCTL, KC_BTN1, KC_BTN2,     KC_SPC, KC_RGUI, KC_RALT \
+  KC_LALT, KC_LCTL, _______,      KC_SPC, _______,  KC_RCTL \
   //`--------------------------'  `--------------------------'
                   ),
 
   [_FUNC] = LAYOUT( \
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
-  KC_ESC,   KC_F9,  KC_F10,  KC_F11,  KC_F12, KC_PSCR,                      KC_SLEP, KC_BRIU, XXXXXXX, KC_VOLU, KC_MUTE, XXXXXXX, \
+  KC_ESC, KC_WH_L, KC_MS_U, KC_WH_R, KC_WH_U, XXXXXXX,                          KC_BTN1, KC_BRIU, XXXXXXX, KC_VOLU, KC_MUTE, KC_BTN1, \
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-  KC_TAB,   KC_F5,   KC_F6,   KC_F7,   KC_F8,  KC_DEL,                      XXXXXXX, KC_BRID, KC_MPRV, KC_VOLD, KC_MNXT, KC_MPLY, \
+  KC_TAB, KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_D, XXXXXXX,                          KC_BTN2, KC_BRID, KC_MPRV, KC_VOLD, KC_MNXT, KC_BTN2, \
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-  KC_LSFT,   KC_F1,   KC_F2,   KC_F3,   KC_F4,  KC_INS,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______, \
+  KC_LSFT, KC_ACL0, KC_ACL1, KC_ACL2, XXXXXXX, XXXXXXX,                         KC_BTN3, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_RGUI, \
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-  _______, KC_LCTL, _______,     KC_SPC, KC_RGUI, KC_RALT \
+  KC_LALT, KC_LCTL, _______,      KC_SPC, _______,  KC_RCTL \
   //`--------------------------'  `--------------------------'
                   )
 };
@@ -95,6 +94,15 @@ void persistent_default_layer_set(uint16_t default_layer) {
 //   }
 // }
 
+void crkbd_update_tri_layer(uint8_t layer1, uint8_t layer2, uint8_t layer3) {
+  if (IS_LAYER_ON(layer1) && IS_LAYER_ON(layer2)) {
+    layer_on(layer3);
+  } else {
+    layer_off(layer3);
+  }
+}
+
+
 void matrix_init_user(void) {
 #ifdef RGBLIGHT_ENABLE
   RGB_current_mode = rgblight_config.mode;
@@ -111,14 +119,16 @@ void matrix_init_user(void) {
 // When add source files to SRC in rules.mk, you can use functions.
 const char *read_layer_state(void);
 const char *read_logo(void);
-void set_keylog(uint16_t keycode, keyrecord_t *record);
-const char *read_keylog(void);
-const char *read_keylogs(void);
+// void set_keylog(uint16_t keycode, keyrecord_t *record);
+// const char *read_keylog(void);
+// const char *read_keylogs(void);
 
 // const char *read_mode_icon(bool swap);
 // const char *read_host_led_state(void);
 // void set_timelog(void);
 // const char *read_timelog(void);
+void set_keycounter(void);
+const char *read_keycounter(void);
 
 void matrix_scan_user(void) {
   iota_gfx_task();
@@ -128,11 +138,13 @@ void matrix_render_user(struct CharacterMatrix *matrix) {
   if (is_master) {
     // If you want to change the display of OLED, you need to change here
     matrix_write_ln(matrix, read_layer_state());
-    matrix_write_ln(matrix, read_keylog());
-    //matrix_write_ln(matrix, read_keylogs());
+    matrix_write_ln(matrix, read_keycounter());
+    // matrix_write_ln(matrix, read_keylog());
+    // matrix_write_ln(matrix, read_keylogs());
     //matrix_write_ln(matrix, read_mode_icon(keymap_config.swap_lalt_lgui));
     //matrix_write_ln(matrix, read_host_led_state());
     //matrix_write_ln(matrix, read_timelog());
+    matrix_write_ln(matrix, "C.E.U.-B503");
   } else {
     matrix_write(matrix, read_logo());
   }
@@ -156,9 +168,10 @@ void iota_gfx_task_user(void) {
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   if (record->event.pressed) {
 #ifdef SSD1306OLED
-    set_keylog(keycode, record);
+    // set_keylog(keycode, record);
 #endif
     // set_timelog();
+    set_keycounter();
   }
 
   switch (keycode) {
@@ -170,23 +183,27 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   case SYMBOL:
     if (record->event.pressed) {
       layer_on(_SYMBOL);
+      crkbd_update_tri_layer(_SYMBOL, _NAVI, _FUNC);
     } else {
       layer_off(_SYMBOL);
+      crkbd_update_tri_layer(_SYMBOL, _NAVI, _FUNC);
     }
     return false;
   case NAVI:
     if (record->event.pressed) {
       layer_on(_NAVI);
+      crkbd_update_tri_layer(_SYMBOL, _NAVI, _FUNC);
     } else {
       layer_off(_NAVI);
+      crkbd_update_tri_layer(_SYMBOL, _NAVI, _FUNC);
     }
     return false;
-  case FUNC:
-    if (record->event.pressed) {
-      layer_on(_FUNC);
-    } else {
-      layer_off(_FUNC);
-    } return false;
+  // case FUNC:
+  //   if (record->event.pressed) {
+  //     layer_on(_FUNC);
+  //   } else {
+  //     layer_off(_FUNC);
+  //   } return false;
     // case LOWER:
     //   if (record->event.pressed) {
     //     layer_on(_LOWER);
