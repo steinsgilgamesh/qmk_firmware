@@ -57,6 +57,7 @@ enum custom_keycodes {
 #define KC_ALAP  LALT_T(KC_APP)
 #define KC_JEQL  LSFT(KC_MINS)
 #define KC_ENSF  RSFT_T(KC_ENT)
+#define KC_ROSF  RSFT_T(KC_RO)
 
 // Layer tap
 #define KC_BSLO  LT(_LOWER, KC_BSPC)
@@ -82,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------+--------|
      KC_LCTRL, KC_LALT, KC_LGUI,   LOWER,          KC_BSLO,          KC_SPRA,   RAISE, KC_ALAP, KC_LEFT, KC_DOWN, KC_RGHT,\
   //`-------------------------------------------------------------------------------------------------------------------'
-       KC_DEL \
+       KC_ROSF \
   // ExtraKey: Split backspace key or it is below the enter key.
   ),
 
@@ -92,7 +93,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+-----------------|
         _____,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10,   XXXXX,   XXXXX,   XXXXX, KC_QUOT, KC_BSLS,            _____,\
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------+--------|
-        _____,  KC_F11,  KC_F12,   XXXXX,   XXXXX,   KANJI,  KC_DEL,   XXXXX,   XXXXX,   XXXXX,   KC_RO, KC_PGUP,         \
+        _____,  KC_F11,  KC_F12,   XXXXX,   KANJI,   KANJI,  KC_DEL,   XXXXX,   XXXXX,   XXXXX,   KC_RO, KC_PGUP,         \
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------+--------|
         _____,   _____,   _____,   _____,           KC_DEL,          KC_MLAD,   _____,   XXXXX, KC_HOME, KC_PGDN,  KC_END,\
   //`-------------------------------------------------------------------------------------------------------------------'
