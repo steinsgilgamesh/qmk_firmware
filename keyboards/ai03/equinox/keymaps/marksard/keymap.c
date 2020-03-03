@@ -35,11 +35,12 @@ enum custom_keycodes {
   KANJI,
 };
 
-#define KC_MLAD  MO(_ADJUST)
+#define KC_ESAD  LT(_ADJUST, KC_ESC)
 #define KC_BSLO  LT(_LOWER, KC_BSPC)
 #define KC_SPRA  LT(_RAISE, KC_SPC)
 #define KC_ENSF  RSFT_T(KC_ENT)
 #define KC_ALAP  RALT_T(KC_APP)
+#define KC_SLSF  RSFT_T(KC_SLSH)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_all(
@@ -48,9 +49,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------|
       KC_CAPS,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L, KC_ENSF, KC_ENSF,
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------|
-      KC_LSFT, KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_RSFT,
+      KC_LSFT, KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSF,
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------|
-      KC_LCTL, KC_LALT, KC_LGUI,          KC_BSLO,          KC_MLAD,          KC_SPRA, KC_ALAP, KC_RALT,  KC_ESC
+      KC_LCTL, KC_LALT, KC_LGUI,          KC_BSLO,          KC_ESAD,          KC_SPRA, KC_RGUI, KC_RALT, KC_ALAP
   //`-----------------------------------------------------------------------------------------------------------'
   ),
 
@@ -58,9 +59,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------------------------------------------------------------.
       _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5, KC_MINS,  KC_EQL, KC_JYEN, KC_LBRC, KC_RBRC,  KC_DEL,
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------|
-      _______,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10, XXXXXXX, XXXXXXX, KC_QUOT, KC_SCLN, KC_BSLS, KC_BSLS,
+      _______,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10, XXXXXXX, XXXXXXX, KC_SCLN, KC_QUOT, KC_BSLS, KC_BSLS,
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------|
-      _______, _______,  KC_F11,  KC_F12, XXXXXXX,   KANJI,   KANJI,  KC_DEL, XXXXXXX,   KC_RO, KC_SLSH, _______,
+      _______, _______,  KC_F11,  KC_F12, XXXXXXX,   KANJI,   KANJI,  KC_DEL, XXXXXXX, XXXXXXX, XXXXXXX,   KC_RO,
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------|
       _______, _______, _______,          _______,          _______,          _______, _______, _______, _______
   //`-----------------------------------------------------------------------------------------------------------'
