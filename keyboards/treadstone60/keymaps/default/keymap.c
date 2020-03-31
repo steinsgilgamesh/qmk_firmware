@@ -81,16 +81,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   )
 };
 
-uint16_t get_tapping_term(uint16_t keycode) {
-  switch (keycode) {
-    case KC_SPLO:
-      return TAPPING_LAYER_TERM;
-    default:
-      return TAPPING_TERM;
-  }
-}
-
-int RGB_current_mode;
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   bool result = false;

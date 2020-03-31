@@ -17,11 +17,8 @@
 #pragma once
 
 // place overrides here
-#define TAPPING_TERM 200
+#define TAPPING_TERM 150
 #define IGNORE_MOD_TAP_INTERRUPT
-
-#define TAPPING_LAYER_TERM 150 // Custom LT Tapping term
-#define TAPPING_TERM_PER_KEY
 
 #ifdef MOUSEKEY_ENABLE
   #undef MOUSEKEY_INTERVAL
@@ -38,17 +35,4 @@
 
   #undef MOUSEKEY_DELAY
   #define MOUSEKEY_DELAY 0
-#endif
-
-// Selection of RGBLIGHT MODE to use.
-#if defined(LED_ANIMATIONS)
-   //#define RGBLIGHT_EFFECT_BREATHING
-   #define RGBLIGHT_EFFECT_RAINBOW_MOOD
-   #define RGBLIGHT_EFFECT_RAINBOW_SWIRL
-   //#define RGBLIGHT_EFFECT_SNAKE
-   #define RGBLIGHT_EFFECT_KNIGHT
-   //#define RGBLIGHT_EFFECT_CHRISTMAS
-   #define RGBLIGHT_EFFECT_STATIC_GRADIENT
-   //#define RGBLIGHT_EFFECT_RGB_TEST
-   //#define RGBLIGHT_EFFECT_ALTERNATING
 #endif
