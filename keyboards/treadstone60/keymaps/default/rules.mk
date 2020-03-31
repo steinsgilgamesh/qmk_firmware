@@ -1,2 +1,2 @@
 MOUSEKEY_ENABLE = yes       # Mouse keys
-RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
+RGBLIGHT_ENABLE = yes        # Enable keyboard RGB underglow
