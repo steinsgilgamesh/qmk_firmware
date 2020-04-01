@@ -51,10 +51,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGB_DI_PIN D3
 #ifdef RGB_DI_PIN
   #define RGBLED_NUM 6
+  #ifndef IOS_DEVICE_ENABLE
+    #define RGBLIGHT_LIMIT_VAL 255 /* The maximum brightness level */
+    #define RGBLIGHT_VAL_STEP 8
+  #else
+    #define RGBLIGHT_LIMIT_VAL 50
+    #define RGBLIGHT_VAL_STEP 4
+  #endif
   #define RGBLIGHT_HUE_STEP 8
   #define RGBLIGHT_SAT_STEP 8
-  #define RGBLIGHT_VAL_STEP 8
-  #define RGBLIGHT_LIMIT_VAL 255 /* The maximum brightness level */
   #define RGBLIGHT_SLEEP  /* If defined, the RGB lighting will be switched off when the host goes to sleep */
 /*== all animations enable ==*/
 //   #define RGBLIGHT_ANIMATIONS
@@ -76,13 +81,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define RGBLIGHT_EFFECT_BREATHE_MAX    255   // 0 to 255
 #endif
 
+#if defined(RGBLIGHT_ENABLE) && !defined(IOS_DEVICE_ENABLE)
+// USB_MAX_POWER_CONSUMPTION value for treadstone32 keyboard
+//  120  RGBoff
+//  330  RGB 6
+//  300  RGB 32
+  #define USB_MAX_POWER_CONSUMPTION 400
+#else
+  // fix iPhone and iPad power adapter issue
+  // iOS device need lessthan 100
+  #define USB_MAX_POWER_CONSUMPTION 100
+#endif
+
 /* Debounce reduces chatter (unintended double-presses) - set 0 if debouncing is not needed */
 #define DEBOUNCE 5
 
 #ifdef MOUSEKEY_ENABLE
   #undef MOUSEKEY_INTERVAL
   #define MOUSEKEY_INTERVAL 1
-
   #undef MOUSEKEY_TIME_TO_MAX
   #define MOUSEKEY_TIME_TO_MAX 150
 
