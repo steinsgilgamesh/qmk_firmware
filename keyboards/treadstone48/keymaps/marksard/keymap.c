@@ -74,7 +74,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------+--------|
       _______,  KC_F11,  KC_F12, XXXXXXX,   KANJI,   KANJI,  KC_DEL, XXXXXXX, XXXXXXX, XXXXXXX,   KC_RO, KC_PGUP,         \
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------+--------|
-      _______, _______, _______, _______,           KC_DEL,          KC_MLAD, _______, XXXXXXX, KC_HOME, KC_PGDN,  KC_END,\
+      _______, _______, _______, _______,          _______,          KC_MLAD, _______, XXXXXXX, KC_HOME, KC_PGDN,  KC_END,\
   //`-------------------------------------------------------------------------------------------------------------------'
     XXXXXXX \
   // ExtraKey: This key is an extra key. REV1 is a split back space. REV2 is to the right of the arrow-up key.
@@ -96,9 +96,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [_ADJUST] = LAYOUT_base( \
   //,--------------------------------------------------------------------------------------------------------------------.
-      XXXXXXX,   RESET,  RGBRST, AG_NORM, AG_SWAP, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,          XXXXXXX,\
+      XXXXXXX,   RESET,  RGBRST, AG_NORM, AG_SWAP, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_INS,          KC_PSCR,\
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+-----------------|
-      XXXXXXX, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, XXXXXXX,          XXXXXXX,\
+      XXXXXXX, RGB_TOG, RGB_HUI, RGB_SAI, RGB_VAI, XXXXXXX, KC_MS_L, KC_MS_D, KC_MS_U, KC_MS_R, XXXXXXX,          KC_NLCK,\
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------+--------|
       _______, RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, XXXXXXX, KC_BTN1, KC_BTN2, XXXXXXX, XXXXXXX, XXXXXXX, KC_MS_U,         \
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------+--------|
