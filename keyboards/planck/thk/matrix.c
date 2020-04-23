@@ -41,7 +41,7 @@ void dip_update(uint8_t index, bool active) { }
 __attribute__ ((weak))
 void dip_update_kb(uint8_t index, bool active) { }
 
-bool last_dip_switch[4] = {0};
+bool last_dip_switch[4] = {0, 0, 0, 0};
 
 void matrix_init(void) {
 
@@ -89,9 +89,9 @@ uint8_t matrix_scan(void) {
       if (last_dip_switch[i] ^ dip_switch[i]) {
         dip_update(i, dip_switch[i]);
         dip_update_kb(i, dip_switch[i]);
+        last_dip_switch[i] = dip_switch[i];
       }
     }
-    memcpy(last_dip_switch, dip_switch, sizeof(&dip_switch));
 
     // actual matrix scan
     for (uint8_t c = 0; c < MATRIX_ROWS; c++) {
