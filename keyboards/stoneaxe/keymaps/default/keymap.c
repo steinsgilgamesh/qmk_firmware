@@ -32,6 +32,7 @@ enum tapdances{
 #define KC_Z_CT  LCTL_T(KC_Z)
 #define KC_X_AL  LALT_T(KC_X)
 #define KC_C_GU  LGUI_T(KC_C)
+#define KC_B_CT  LCTL_T(KC_B)
 #define KC_SSCT  LCTL_T(KC_SLSH)
 #define KC_ENSF  LSFT_T(KC_ENT)
 
@@ -61,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
        KC_A_SF,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,  KC_ENSF,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       KC_Z_CT,  KC_X_AL,  KC_C_GU,     KC_V,     KC_B,     KC_N,     KC_M,  KC_CODO,  KC_BSLO,  KC_SPRA
+       KC_Z_CT,  KC_X_AL,  KC_C_GU,     KC_V,  KC_B_CT,     KC_N,     KC_M,  KC_CODO,  KC_BSLO,  KC_SPRA
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
   ),
 
@@ -71,7 +72,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
        KC_F6SF,    KC_F7,    KC_F8,    KC_F9,   KC_F10,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_SCLN,  KC_QUOT,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       KC_11CT,  KC_12AL,   KC_ESC,   KC_TAB,    KANJI,   KC_DEL,  XXXXXXX,   KC_GRV,  _______,  KC_MLAD
+       KC_11CT,  KC_12AL,   KC_ESC,   KC_TAB,    KANJI,   KC_DEL,    KC_RO,   KC_GRV,  _______,  KC_MLAD
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
   ),
 
