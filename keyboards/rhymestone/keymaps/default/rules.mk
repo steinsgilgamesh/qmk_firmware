@@ -1,5 +1,5 @@
 MOUSEKEY_ENABLE = yes       # Mouse keys
-TAP_DANCE_ENABLE = yes
+TAP_DANCE_ENABLE = no
 
 RGBLIGHT_ENABLE = yes        # Enable keyboard RGB underglow
 OLED_DRIVER_ENABLE = yes
