@@ -36,13 +36,11 @@ enum custom_keycodes {
 };
 
 // Base layer mod tap
-#define KC_A_SF  LSFT_T(KC_A)
-#define KC_ENSF  RSFT_T(KC_ENT)
+#define KC_Z_SF  LSFT_T(KC_Z)
 #define KC_SLSF  RSFT_T(KC_SLSH)
 
 // Lower layer mod tap
-#define KC_F6SF  LSFT_T(KC_F6)
-#define KC_QUSF  RSFT_T(KC_QUOT)
+#define KC_11SF  LSFT_T(KC_F11)
 #define KC_GRSF  RSFT_T(KC_GRV)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -50,9 +48,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,---------------------------------------------------------------------------------------------------.
           KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       KC_A_SF,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,  KC_ENSF,
+          KC_A,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,   KC_ENT,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-          KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,  KC_COMM,   KC_DOT,  KC_SLSF,
+       KC_Z_SF,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,  KC_COMM,   KC_DOT,  KC_SLSF,
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
        KC_LCTL,  KC_LALT,  KC_LGUI,    LOWER,  KC_BSPC,   KC_SPC,    RAISE,  KC_RGUI,   KC_APP,  KC_RCTL
   //,---------------------------------------------------------------------------------------------------.
@@ -62,9 +60,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,---------------------------------------------------------------------------------------------------.
          KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,  KC_MINS,   KC_EQL,  KC_LBRC,  KC_RBRC,  KC_BSLS,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-       KC_F6SF,    KC_F7,    KC_F8,    KC_F9,   KC_F10,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_SCLN,  KC_QUSF,
+         KC_F6,    KC_F7,    KC_F8,    KC_F9,   KC_F10,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_SCLN,  KC_QUOT,
   //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
-        KC_F11,   KC_F12,   KC_ESC,   KC_TAB,    KANJI,   KC_DEL,  XXXXXXX,  XXXXXXX,    KC_RO,  KC_GRSF,
+       KC_11SF,   KC_F12,   KC_ESC,   KC_TAB,    KANJI,   KC_DEL,  XXXXXXX,  XXXXXXX,    KC_RO,  KC_GRSF,
   //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
        _______,  _______,  _______,  _______,   KC_DEL,  _______,  _______,  _______,  _______,  _______
   //,---------------------------------------------------------------------------------------------------.
