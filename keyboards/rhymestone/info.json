@@ -1,273 +1,213 @@
-[
-  {
-    "backcolor": "#000000",
-    "name": "Rhymestone",
-    "author": "@marksard",
-    "notes": "A 40 keys split keyboard with full LED backlight.\r\n",
-    "background": {
-      "name": "Carbon fibre 1",
-      "style": "background-image: url('/bg/carbonfibre/carbon_texture1879.png');"
-    },
-    "plate": true
-  },
-  [
-    {
-      "t": "#30abab\n\n#d65aa5\n\n\n\n\n\n\n\n#000000",
-      "fa": [
-        0,
-        0,
-        4,
-        0,
-        0,
-        0,
-        4,
-        0,
-        0,
-        0,
-        5
-      ]
-    },
-    "\n\n1\n\n\n\nF1\n\n\n\nQ",
-    "\n\n2\n\n\n\nF2\n\n\n\nW",
-    "\n\n3\n\n\n\nF3\n\n\n\nE",
-    "\n\n4\n\n\n\nF4\n\n\n\nR",
-    "\n\n5\n\n\n\nF5\n\n\n\nT",
-    {
-      "x": 1
-    },
-    "\n\n6\n\n\n\n-\n\n\n\nY",
-    "\n\n7\n\n\n\n^\n\n\n\nU",
-    "\n\n8\n\n\n\n\\\n\n\n\nI",
-    "\n\n9\n\n\n\n@\n\n\n\nO",
-    "\n\n0\n\n\n\n[\n\n\n\nP"
-  ],
-  [
-    {
-      "t": "#30abab\n\n\n\n\n\n\n\n\n\n#000000"
-    },
-    "\n\n\n\n\n\nF6\n\n\n\nA",
-    "\n\n\n\n\n\nF7\n\n\n\nS",
-    "\n\n\n\n\n\nF8\n\n\n\nD",
-    "\n\n\n\n\n\nF9\n\n\n\nF",
-    "\n\n\n\n\n\nF10\n\n\n\nG",
-    {
-      "x": 1,
-      "t": "#000000\n\n#d65aa5"
-    },
-    "\n\n:\n\n\n\n\n\n\n\nH",
-    {
-      "t": "#30abab\n\n#d65aa5\n\n\n\n\n\n\n\n#000000"
-    },
-    "\n\n4\n\n\n\n\n\n\n\nJ",
-    "\n\n5\n\n\n\n;\n\n\n\nK",
-    "\n\n6\n\n\n\n:\n\n\n\nL",
-    {
-      "c": "#9abf7a",
-      "fa": [
-        0,
-        0,
-        4,
-        0,
-        0,
-        0,
-        4
-      ]
-    },
-    "\n\n+\n\n\n\n\\\n\n\n\nEnter"
-  ],
-  [
-    {
-      "c": "#cccccc",
-      "fa": [
-        0,
-        0,
-        1,
-        0,
-        0,
-        0,
-        1
-      ]
-    },
-    "\n\nSHFT\n\n\n\nSftT(F11)\n\n\n\nSftT(Z)",
-    {
-      "t": "#30abab\n\n\n\n\n\n\n\n\n\n#000000",
-      "fa": [
-        0,
-        0,
-        1,
-        0,
-        0,
-        0,
-        4,
-        0,
-        0,
-        0,
-        5
-      ]
-    },
-    "\n\n\n\n\n\nF12\n\n\n\nX",
-    {
-      "t": "#30abab\n#000000",
-      "a": 5,
-      "f2": 5
-    },
-    "\nC",
-    {
-      "t": "#30abab\n\n\n\n\n\n\n\n\n\n#000000",
-      "a": 4,
-      "fa": [
-        0,
-        5,
-        5,
-        5,
-        5,
-        5,
-        4,
-        5,
-        5,
-        5,
-        5
-      ]
-    },
-    "\n\n\n\n\n\nKanji\n\n\n\nV",
-    "\n\n\n\n\n\nEnter\n\n\n\nB",
-    {
-      "x": 1,
-      "t": "#000000\n\n#d65aa5",
-      "fa": [
-        0,
-        5,
-        4,
-        5,
-        5,
-        5,
-        4,
-        5,
-        5,
-        5,
-        5
-      ]
-    },
-    "\n\n/\n\n\n\n\n\n\n\nN",
-    {
-      "t": "#30abab\n\n#d65aa5\n\n\n\n\n\n\n\n#000000"
-    },
-    "\n\n1\n\n\n\n,\n\n\n\nM",
-    {
-      "fa": [
-        0,
-        5,
-        4,
-        5,
-        5,
-        5,
-        4,
-        5,
-        5,
-        5,
-        4
-      ]
-    },
-    "\n\n2\n\n\n\n.\n\n\n\nTD(,.)",
-    {
-      "c": "#c7b25a",
-      "fa": [
-        0,
-        5,
-        4,
-        5,
-        5,
-        5,
-        4,
-        5,
-        5,
-        5,
-        5
-      ]
-    },
-    "\n\n3\n\n\n\n/\n\n\n\n&uarr;",
-    {
-      "c": "#cccccc",
-      "fa": [
-        0,
-        5,
-        4,
-        5,
-        5,
-        5,
-        4
-      ]
-    },
-    "\n\n-\n\n\n\n]\n\n\n\nSftT(-)"
-  ],
-  [
-    {
-      "c": "#80807d",
-      "t": "#000000",
-      "a": 7,
-      "fa": [
-        1
-      ]
-    },
-    "CtlT(Esc)",
-    "AltT(Tab)",
-    {
-      "f": 3
-    },
-    "Gui",
-    {
-      "c": "#30abab",
-      "f": 3
-    },
-    "&dArr;",
-    {
-      "c": "#80807d",
-      "t": "#30abab\n\n\n\n\n\n\n\n\n\n#000000",
-      "a": 4,
-      "fa": [
-        1,
-        0,
-        0,
-        0,
-        0,
-        0,
-        4
-      ]
-    },
-    "\n\n\n\n\n\nDel\n\n\n\nBkspc",
-    {
-      "x": 1,
-      "c": "#cccccc",
-      "t": "#30abab",
-      "a": 7
-    },
-    "",
-    {
-      "c": "#d65aa5",
-      "t": "#000000",
-      "f": 3
-    },
-    "&uArr;",
-    {
-      "c": "#c7b25a",
-      "t": "#000000\n\n#d65aa5",
-      "a": 4,
-      "fa": [
-        1,
-        0,
-        4,
-        0,
-        0,
-        0,
-        4,
-        0,
-        0,
-        0,
-        5
-      ]
-    },
-    "\n\n0\n\n\n\n\n\n\n\n&larr;",
-    "\n\n.\n\n\n\n\n\n\n\n&darr;",
-    "\n\n=\n\n\n\n\n\n\n\n&rarr;"
-  ]
-]
+{
+    "keyboard_name": "Rhymestone",
+    "url": "https://github.com/marksard/Keyboards",
+    "maintainer": "marksard",
+    "width": 11,
+    "height": 4,
+    "layouts": {
+        "LAYOUT": {
+            "layout": [
+                {
+                    "label": "Q",
+                    "x": 0,
+                    "y": 0
+                },
+                {
+                    "label": "W",
+                    "x": 1,
+                    "y": 0
+                },
+                {
+                    "label": "E",
+                    "x": 2,
+                    "y": 0
+                },
+                {
+                    "label": "R",
+                    "x": 3,
+                    "y": 0
+                },
+                {
+                    "label": "T",
+                    "x": 4,
+                    "y": 0
+                },
+                {
+                    "label": "Y",
+                    "x": 6,
+                    "y": 0
+                },
+                {
+                    "label": "U",
+                    "x": 7,
+                    "y": 0
+                },
+                {
+                    "label": "I",
+                    "x": 8,
+                    "y": 0
+                },
+                {
+                    "label": "O",
+                    "x": 9,
+                    "y": 0
+                },
+                {
+                    "label": "P",
+                    "x": 10,
+                    "y": 0
+                },
+                {
+                    "label": "A",
+                    "x": 0,
+                    "y": 1
+                },
+                {
+                    "label": "S",
+                    "x": 1,
+                    "y": 1
+                },
+                {
+                    "label": "D",
+                    "x": 2,
+                    "y": 1
+                },
+                {
+                    "label": "F",
+                    "x": 3,
+                    "y": 1
+                },
+                {
+                    "label": "G",
+                    "x": 4,
+                    "y": 1
+                },
+                {
+                    "label": "H",
+                    "x": 6,
+                    "y": 1
+                },
+                {
+                    "label": "J",
+                    "x": 7,
+                    "y": 1
+                },
+                {
+                    "label": "K",
+                    "x": 8,
+                    "y": 1
+                },
+                {
+                    "label": "L",
+                    "x": 9,
+                    "y": 1
+                },
+                {
+                    "label": "Enter",
+                    "x": 10,
+                    "y": 1
+                },
+                {
+                    "label": "Z",
+                    "x": 0,
+                    "y": 2
+                },
+                {
+                    "label": "X",
+                    "x": 1,
+                    "y": 2
+                },
+                {
+                    "label": "C",
+                    "x": 2,
+                    "y": 2
+                },
+                {
+                    "label": "V",
+                    "x": 3,
+                    "y": 2
+                },
+                {
+                    "label": "B",
+                    "x": 4,
+                    "y": 2
+                },
+                {
+                    "label": "N",
+                    "x": 6,
+                    "y": 2
+                },
+                {
+                    "label": "M",
+                    "x": 7,
+                    "y": 2
+                },
+                {
+                    "label": ",",
+                    "x": 8,
+                    "y": 2
+                },
+                {
+                    "label": ".",
+                    "x": 9,
+                    "y": 2
+                },
+                {
+                    "label": "/",
+                    "x": 10,
+                    "y": 2
+                },
+                {
+                    "label": "Ctrl",
+                    "x": 0,
+                    "y": 3
+                },
+                {
+                    "label": "Win",
+                    "x": 1,
+                    "y": 3
+                },
+                {
+                    "label": "Alt",
+                    "x": 2,
+                    "y": 3
+                },
+                {
+                    "label": "Lower",
+                    "x": 3,
+                    "y": 3
+                },
+                {
+                    "label": "backspace",
+                    "x": 4,
+                    "y": 3
+                },
+                {
+                    "label": "space",
+                    "x": 6,
+                    "y": 3
+                },
+                {
+                    "label": "Upper",
+                    "x": 7,
+                    "y": 3
+                },
+                {
+                    "label": "Alt",
+                    "x": 8,
+                    "y": 3
+                },
+                {
+                    "label": "App",
+                    "x": 9,
+                    "y": 3
+                },
+                {
+                    "label": "Ctrl",
+                    "x": 10,
+                    "y": 3
+                }
+            ]
+        }
+    }
+}

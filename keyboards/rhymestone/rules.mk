@@ -35,3 +35,5 @@ TAP_DANCE_ENABLE = no
 
 RGBLIGHT_ENABLE = no        # Enable keyboard RGB underglow
 OLED_DRIVER_ENABLE = no
+
+DEFAULT_FOLDER = rhymestone/rev1
