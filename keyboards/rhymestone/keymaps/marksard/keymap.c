@@ -14,7 +14,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
-#include "keymap_jp.h"
 #include "./common/oled_helper.h"
 
 #ifdef RGBLIGHT_ENABLE
@@ -28,138 +27,80 @@ extern rgblight_config_t rgblight_config;
 // entirely and just use numbers.
 enum layer_number {
   _BASE = 0,
-  _NUMPAD,
   _LOWER,
   _RAISE,
   _ADJUST,
 };
 
 enum custom_keycodes {
-  BASE = SAFE_RANGE,
-  NUMPAD,
-  KANJI,
-  LOWER,
+  LOWER = SAFE_RANGE,
   RAISE,
   ADJUST,
+  KANJI,
   RGBRST
 };
 
-// enum tapdances{
-//   TD_CODO = 0,
-//   // TD_MNUB,
-// };
-
-// Layer Mode aliases
-#define KC_LOWER LOWER
-#define KC_RAISE RAISE
-#define KC_DLNP NUMPAD //DF(_NUMPAD)
-#define KC_DLBS BASE //DF(_BASE)
-
-#define KC______ KC_TRNS
-#define KC_XXXXX KC_NO
-#define KC_KANJI KANJI
-
-#define KC_RST   RESET
-#define KC_LRST  RGBRST
-#define KC_LTOG  RGB_TOG
-#define KC_LHUI  RGB_HUI
-#define KC_LHUD  RGB_HUD
-#define KC_LSAI  RGB_SAI
-#define KC_LSAD  RGB_SAD
-#define KC_LVAI  RGB_VAI
-#define KC_LVAD  RGB_VAD
-#define KC_LMOD  RGB_MOD
-#define KC_KNRM  AG_NORM
-#define KC_KSWP  AG_SWAP
-
+// Base layer mod tap
 #define KC_A_SF  LSFT_T(KC_A)
-#define KC_ENSF  LSFT_T(KC_ENT)
+#define KC_ENSF  RSFT_T(KC_ENT)
+#define KC_SLSF  RSFT_T(KC_SLSH)
+
+// Lower layer mod tap
 #define KC_F6SF  LSFT_T(KC_F6)
-
-// #define KC_ZSFT  LSFT_T(KC_Z)
-// #define KC_MNSF  LSFT_T(KC_MINS)
-#define KC_ESCT  RCTL_T(KC_ESC)
-// #define KC_TBAL  LALT_T(KC_TAB)
-// #define KC_11SF  LSFT_T(KC_F11)
-// #define KC_ALAP  LALT_T(KC_APP)
-#define KC_JEQL  LSFT(KC_MINS)
-// #define KC_WLCK  LALT(KC_L)
-#define KC_SFEQ  LSFT(KC_MINS)
-// #define KC_SFPL  LSFT(KC_SCLN)
-// #define KC_SFAS  LSFT(KC_QUOT)
-
-// #define KC_CODO  TD(TD_CODO)
-// #define KC_MNUB  TD(TD_MNUB)
-
-// qk_tap_dance_action_t tap_dance_actions[] = {
-//   [TD_CODO] = ACTION_TAP_DANCE_DOUBLE(KC_COMM, KC_DOT),
-//   // [TD_MNUB] = ACTION_TAP_DANCE_DOUBLE(KC_MINS, LSFT(KC_RO)),
-// };
+#define KC_QUSF  RSFT_T(KC_QUOT)
+#define KC_GRSF  RSFT_T(KC_GRV)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-  [_BASE] = LAYOUT_kc( \
-  //,---------------------------------------------------------------------.
-          Q,     W,     E,     R,     T,     Y,     U,     I,     O,     P,\
-  //|------+------+------+------+------|------+------+------+------+------|
-       A_SF,     S,     D,     F,     G,     H,     J,     K,     L,  ENSF,\
-  //|------+------+------+------+------|------+------+------+------+------|
-          Z,     X,     C,     V,     B,     N,     M,  COMM,   DOT,  SLSH,\
-  //|------+------+------+------+------|------+------+------+------+------|
-       LCTL,  LALT,  LGUI, LOWER,  BSPC,   SPC, RAISE,   APP,   TAB,  ESCT \
-  //|------+------+------+------+-------------+------+------+------+------|
+  [_BASE] = LAYOUT( \
+  //,---------------------------------------------------------------------------------------------------.
+          KC_Q,     KC_W,     KC_E,     KC_R,     KC_T,     KC_Y,     KC_U,     KC_I,     KC_O,     KC_P,
+  //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+       KC_A_SF,     KC_S,     KC_D,     KC_F,     KC_G,     KC_H,     KC_J,     KC_K,     KC_L,  KC_ENSF,
+  //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+          KC_Z,     KC_X,     KC_C,     KC_V,     KC_B,     KC_N,     KC_M,  KC_COMM,   KC_DOT,  KC_SLSF,
+  //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
+       KC_LCTL,  KC_LALT,  KC_LGUI,    LOWER,  KC_BSPC,   KC_SPC,    RAISE,  KC_RGUI,   KC_APP,  KC_RCTL
+  //,---------------------------------------------------------------------------------------------------.
   ),
 
-  [_NUMPAD] = LAYOUT_kc( \
-  //,---------------------------------------------------------------------.
-         P7,    P8,    P9,  PAST,  NLCK,    P7,    P8,    P9,  PAST,  NLCK,\
-  //|------+------+------+------+------|------+------+------+------+------|
-         P4,    P5,    P6,  PMNS,  PSLS,    P4,    P5,    P6,  PMNS,  PSLS,\
-  //|------+------+------+------+------|------+------+------+------+------|
-         P1,    P2,    P3,  PPLS,  QUOT,    P1,    P2,    P3,  PPLS,  QUOT,\
-  //|------+------+------+------+------|------+------+------+------+------|
-       DLBS,    P0,  PDOT,  SFEQ,  BSPC,  DLBS,    P0,  PDOT,  SFEQ,  BSPC \
-  //|------+------+------+------+-------------+------+------+------+------|
+  [_LOWER] = LAYOUT( \
+  //,---------------------------------------------------------------------------------------------------.
+         KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,  KC_MINS,   KC_EQL,  KC_LBRC,  KC_RBRC,  KC_BSLS,
+  //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+       KC_F6SF,    KC_F7,    KC_F8,    KC_F9,   KC_F10,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_SCLN,  KC_QUSF,
+  //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+        KC_F11,   KC_F12,   KC_ESC,   KC_TAB,    KANJI,   KC_DEL,  XXXXXXX,  XXXXXXX,    KC_RO,  KC_GRSF,
+  //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
+       _______,  _______,  _______,  _______,   KC_DEL,  _______,  _______,  _______,  _______,  _______
+  //,---------------------------------------------------------------------------------------------------.
   ),
 
-  [_LOWER] = LAYOUT_kc( \
-  //,---------------------------------------------------------------------.
-         F1,    F2,    F3,    F4,    F5,  MINS,   EQL,  JYEN,  LBRC,  RBRC,\
-  //|------+------+------+------+------|------+------+------+------+------|
-       F6SF,    F7,    F8,    F9,   F10, XXXXX, XXXXX,  SCLN,  QUOT,  BSLS,\
-  //|------+------+------+------+------|------+------+------+------+------|
-        F11,   F12,  DLNP,   TAB, KANJI, XXXXX,  COMM,   DOT,  SLSH,    RO,\
-  //|------+------+------+------+-------------+------+------+------+------|
-      _____, _____, _____, _____,   DEL, _____, _____, _____, _____, _____ \
-  //|------+------+------+------+-------------+------+------+------+------|
+  [_RAISE] = LAYOUT( \
+  //,---------------------------------------------------------------------------------------------------.
+          KC_1,     KC_2,     KC_3,     KC_4,     KC_5,     KC_6,     KC_7,     KC_8,     KC_9,     KC_0,
+  //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+       KC_LSFT,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_LEFT,  KC_DOWN,    KC_UP,  KC_RGHT,  KC_RSFT,
+  //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+       XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_MINS,    KC_RO,  KC_COMM,   KC_DOT,  KC_SLSF,
+  //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
+       _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______
+  //,---------------------------------------------------------------------------------------------------.
   ),
 
-  [_RAISE] = LAYOUT_kc( \
-  //,---------------------------------------------------------------------.
-          1,     2,     3,     4,     5,     6,     7,     8,     9,     0,\
-  //|------+------+------+------+------|------+------+------+------+------|
-       LSFT, XXXXX, XXXXX, XXXXX, XXXXX,  LEFT,  DOWN,    UP,  RGHT,  MINS,\
-  //|------+------+------+------+------|------+------+------+------+------|
-      XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,  COMM,   DOT,  SLSH,\
-  //|------+------+------+------+-------------+------+------+------+------|
-      _____, _____, _____, _____,  BSPC, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX \
-  //|------+------+------+------+-------------+------+------+------+------|
-  ),
-
-  [_ADJUST] = LAYOUT_kc( \
-  //,---------------------------------------------------------------------.
-        RST,  LRST,  KNRM,  KSWP,  CAPS, XXXXX, XXXXX, XXXXX, XXXXX, XXXXX,\
-  //|------+------+------+------+------|------+------+------+------+------|
-       LTOG,  LHUI,  LSAI,  LVAI,  SLCK,  MS_L,  MS_D,  MS_U,  MS_R, XXXXX,\
-  //|------+------+------+------+------|------+------+------+------+------|
-       LMOD,  LHUD,  LSAD,  LVAD,  NLCK,  BTN1,  BTN2, XXXXX, XXXXX, XXXXX,\
-  //|------+------+------+------+-------------+------+------+------+------|
-      _____, _____, _____, _____, XXXXX, XXXXX, _____, XXXXX, XXXXX, XXXXX \
-  //|------+------+------+------+-------------+------+------+------+------|
+  [_ADJUST] = LAYOUT( \
+  //,---------------------------------------------------------------------------------------------------.
+         RESET,   RGBRST,  AG_NORM,  AG_SWAP,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,   KC_INS,  KC_PSCR,
+  //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+       RGB_TOG,  RGB_HUI,  RGB_SAI,  RGB_VAI,  XXXXXXX,  KC_MS_L,  KC_MS_D,  KC_MS_U,  KC_MS_R,  KC_NLCK,
+  //|---------+---------+---------+---------+---------+---------+---------+---------+---------+---------|
+       RGB_MOD,  RGB_HUD,  RGB_SAD,  RGB_VAD,  XXXXXXX,  KC_BTN1,  KC_BTN2,  XXXXXXX,  XXXXXXX,  XXXXXXX,
+  //`---------+---------+---------+---------+---------+---------+---------+---------+---------+---------'
+       _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______,  _______
+  //,---------------------------------------------------------------------------------------------------.
   )
 };
 
 #define L_BASE _BASE
-#define L_NUMPAD (1<<_NUMPAD)
 #define L_LOWER (1<<_LOWER)
 #define L_RAISE (1<<_RAISE)
 #define L_ADJUST (1<<_ADJUST)
@@ -174,11 +115,10 @@ typedef struct {
   char name[8];
 }LAYER_DISPLAY_NAME;
 
-#define LAYER_DISPLAY_MAX 6
+#define LAYER_DISPLAY_MAX 5
 const LAYER_DISPLAY_NAME layer_display_name[LAYER_DISPLAY_MAX] = {
   {L_BASE, "Base"},
   {L_BASE + 1, "Base"},
-  {L_NUMPAD, "Numpad"},
   {L_LOWER, "Lower"},
   {L_RAISE, "Raise"},
   {L_ADJUST_TRI, "Adjust"}
@@ -257,16 +197,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   bool result = false;
   switch (keycode) {
-    case BASE:
-      if (record->event.pressed) {
-        default_layer_set(L_BASE);
-      }
-      break;
-    case NUMPAD:
-      if (record->event.pressed) {
-        default_layer_set(L_NUMPAD);
-      }
-      break;
     case LOWER:
       update_change_layer(record->event.pressed, _LOWER, _RAISE, _ADJUST);
       break;
@@ -287,7 +217,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     #ifdef RGBLIGHT_ENABLE
       case RGBRST:
           if (record->event.pressed) {
-            rgblight_mode(0);
+            eeconfig_update_rgblight_default();
+            rgblight_enable();
           }
         break;
     #endif
