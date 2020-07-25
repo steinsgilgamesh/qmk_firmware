@@ -19,15 +19,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xFEED
-#define PRODUCT_ID      0xA109
-#define DEVICE_VER      0x000F
+#define PRODUCT_ID      0xA10F
+#define DEVICE_VER      0x0000
 #define MANUFACTURER    monksoffunk
 #define PRODUCT         NumAttack16
 #define DESCRIPTION     4x4 Keyboard Pad
 
 /* key matrix size */
-#define MATRIX_ROWS 5
-#define MATRIX_COLS 5
+#define MATRIX_ROWS 4
+#define MATRIX_COLS 4
 
 /* key matrix pins */
     #define MATRIX_ROW_PINS { B5, B6, B2, B4 }

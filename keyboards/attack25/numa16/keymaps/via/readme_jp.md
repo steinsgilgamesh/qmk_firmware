@@ -1,4 +1,4 @@
-﻿# The numAttack16 default Layout
+﻿# The numAttack16 via Layout
 ## 配列
 
 ### Default Layer

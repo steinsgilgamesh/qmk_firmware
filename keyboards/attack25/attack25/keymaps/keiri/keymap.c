@@ -1,5 +1,4 @@
 #include QMK_KEYBOARD_H
-#include <drivers/avr/pro_micro.h>
 
 #if defined(RGBLIGHT_ENABLE) || defined(RGB_MATRIX_ENABLE)
     extern RGB_CONFIG_t RGB_CONFIG;
@@ -58,9 +57,6 @@ void matrix_init_user(void) {
         rgb_matrix_init();
         RGB_current_config = RGB_CONFIG;
     #endif
-    TX_RX_LED_INIT; //Turn LEDs off by default
-    RXLED0;
-    TXLED0;
 }
 
 void matrix_scan_user(void) {
@@ -194,8 +190,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 	case P00:
 	    if (record->event.pressed) {
-	        SEND_STRING("00");
-	    }
+	        tap_code(KC_P0);
+            tap_code(KC_P0);
+        }
 	    return false;
 	    break;
 
@@ -265,9 +262,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     void led_set_user(uint8_t usb_led) {
         if (!RGB_momentary_on) {
 	        if (usb_led & (1 << USB_LED_NUM_LOCK)) {
+                NumLock_Mode = true;
                 rgblight_sethsv_noeeprom(RGB_current_config.hue, RGB_current_config.sat, RGB_current_config.val);
 			    rgblight_mode_noeeprom(RGB_current_config.mode);
 	        } else {
+                NumLock_Mode = false;
 		        rgblight_sethsv_noeeprom_azure();
                 rgblight_mode_noeeprom(1);
 	        }

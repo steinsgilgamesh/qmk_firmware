@@ -6,13 +6,18 @@
     bool RGB_momentary_on;
 #endif
 
-bool MAC_mode = true;
+#ifdef MAC_MODE
+    bool MAC_mode = true;
+#else
+    bool MAC_mode = false;
+#endif
 bool NumLock_Mode = true;
 
 enum layer_number {
     _NUM = 0,
     _NUMOFF,
     _FN,
+    _FN2,
     _RGB,
     _BLED
 };
@@ -25,40 +30,41 @@ enum custom_keycodes {
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-[_NUM] = LAYOUT_ortho_5x5(
-	KC_NLCK, KC_PSLS, KC_PAST, KC_PMNS, KC_ESC,
-	KC_P7, KC_P8, KC_P9, KC_PPLS, S(KC_TAB),
-	KC_P4, KC_P5, KC_P6, KC_PPLS, LT(_RGB, KC_TAB),
-	KC_P1, KC_P2, KC_P3, KC_PENT, LT(_FN, KC_DEL),
-	KC_P0, P00, KC_PDOT, KC_PENT, LT(_BLED, KC_BSPC)),
+[_NUM] = LAYOUT_ortho_4x4(
+	KC_P7, KC_P8, KC_P9, LT(_RGB, KC_PMNS),
+	KC_P4, KC_P5, KC_P6, LT(_FN, KC_PPLS),
+	KC_P1, KC_P2, KC_P3, LT(_BLED, KC_PSLS),
+	KC_P0, KC_PDOT, LT(_FN2, KC_PENT), LT(_BLED, KC_PAST)),
 
-[_NUMOFF] = LAYOUT_ortho_5x5(
-    _______, _______, _______, _______, _______,
-    KC_HOME, KC_UP, KC_PGUP, _______, _______,
-    KC_LEFT, XXXXXXX, KC_RGHT, _______, _______,
-    KC_END, KC_DOWN, KC_PGDN, _______, _______,
-    KC_INS, P00, KC_DEL, _______, _______),
+[_NUMOFF] = LAYOUT_ortho_4x4(
+    KC_HOME, KC_UP, KC_PGUP, _______,
+    KC_LEFT, XXXXXXX, KC_RGHT, _______,
+    KC_END, KC_DOWN, KC_PGDN, _______,
+    KC_INS, KC_DEL, _______, _______),
 
-[_FN] = LAYOUT_ortho_5x5(
-	KC_F10, KC_F11, KC_F12, XXXXXXX, _______,
-	KC_F7, KC_F8, KC_F9, XXXXXXX, WINMAC,
-	KC_F4, KC_F5, KC_F6, XXXXXXX, XXXXXXX,
-	KC_F1, KC_F2, KC_F3, XXXXXXX, _______,
-	XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX),
+[_FN] = LAYOUT_ortho_4x4(
+	KC_F7, KC_F8, KC_F9, KC_F10,
+	KC_F4, KC_F5, KC_F6, XXXXXXX,
+	KC_F1, KC_F2, KC_F3, _______,
+	XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX),
 
-[_RGB] = LAYOUT_ortho_5x5(
-	RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI, \
-    RGBRST,  RGB_MODR, RGB_HUD, RGB_SAD, RGB_VAD, \
-	RGB_MODE_PLAIN, RGB_MODE_BREATHE, RGB_SPI, XXXXXXX, _______,
-	RGB_MODE_SWIRL, RGB_MODE_SNAKE, RGB_SPD, XXXXXXX, XXXXXXX,
-	XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX),
+[_FN2] = LAYOUT_ortho_4x4(
+	KC_NLCK, KC_PSLS, KC_PAST, S(KC_TAB),
+	KC_ESC, _______, WINMAC, KC_TAB,
+	_______, _______, _______, KC_BSPC,
+	_______, _______, _______, _______),
 
-[_BLED] = LAYOUT_ortho_5x5(
-    BL_TOGG, BL_ON, BL_INC, BL_STEP, XXXXXXX,
-    BL_BRTG, BL_OFF, BL_DEC, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX)
+[_RGB] = LAYOUT_ortho_4x4(
+	RGB_TOG, RGB_MOD, RGB_HUI, XXXXXXX,
+    RGBRST,  RGB_MODR, RGB_HUD, _______,
+	RGB_SAI, XXXXXXX, RGB_VAI, XXXXXXX,
+	RGB_SAD, XXXXXXX, RGB_VAD, XXXXXXX),
+
+[_BLED] = LAYOUT_ortho_4x4(
+    BL_TOGG, BL_ON, BL_INC, BL_STEP,
+    BL_BRTG, BL_OFF, BL_DEC, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX)
 };
 
 void matrix_init_user(void) {
@@ -265,7 +271,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 	case P00:
 	    if (record->event.pressed) {
-	        tap_code(KC_P0);
+            tap_code(KC_P0);
             tap_code(KC_P0);
 	    }
 	    return false;
@@ -330,6 +336,12 @@ void rgb_matrix_indicators_user(void) {
 		        RGB_momentary_on = true;
 		        break;
 
+            case _FN2:
+                //rgblight_sethsv_noeeprom(HSV_ORANGE);
+                //rgblight_mode_noeeprom(1);
+		        RGB_momentary_on = true;
+		        break;
+
             case _NUMOFF:
                 rgblight_sethsv_noeeprom(HSV_AZURE);
 			    rgblight_mode_noeeprom(1);
@@ -348,7 +360,7 @@ void rgb_matrix_indicators_user(void) {
     }
 
     void led_set_user(uint8_t usb_led) {
-        if (!RGB_momentary_on && !MAC_mode) {
+         if (!RGB_momentary_on && !MAC_mode){
 	        if (usb_led & (1 << USB_LED_NUM_LOCK)) {
                 NumLock_Mode = true;
                 rgblight_sethsv_noeeprom(RGB_current_config.hue, RGB_current_config.sat, RGB_current_config.val);

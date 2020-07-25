@@ -14,8 +14,9 @@ MIDI_ENABLE = no            # MIDI controls
 AUDIO_ENABLE = no           # Audio output on port C6
 UNICODE_ENABLE = no         # Unicode
 BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
-RGBLIGHT_ENABLE = no        # Enable WS2812 RGB underlight.  Do not enable this with audio at the same time.
+RGBLIGHT_ENABLE = yes        # Enable WS2812 RGB underlight.  Do not enable this with audio at the same time.
 SWAP_HANDS_ENABLE = no        # Enable one-hand typing
+VIA_ENABLE = yes
 
 define ATTACK25_CUSTOMISE_MSG
   	$(info Attack25 customize)
@@ -26,30 +27,29 @@ define ATTACK25_CUSTOMISE_MSG
     $(info -  RGB_MATRIX=$(RGB_MATRIX))
   	$(info -  LED_ANIMATION=$(LED_ANIMATIONS))
   	$(info -  IOS_DEVICE_ENABLE=$(IOS_DEVICE_ENABLE))
+	$(info -  MAC_MODE=$(MAC_MODE))
 endef
 
 # Attack25 keyboard customize
 LED_BACK_ENABLE = no        # LED backlight (Enable WS2812 RGB backlight)
 LED_UNDERGLOW_ENABLE = no   # LED underglow (Enable WS2812 RGB underlight)
-LED_BOTH_ENABLE = no        # LED backlight and underglow
+LED_BOTH_ENABLE = yes       # LED backlight and underglow
 LED_1LED_ENABLE = no        # LED 1LED (Enable WS2812 RGB light)
 RGB_MATRIX = no             # RGB LED Matrix
 LED_ANIMATIONS = yes        # LED animations
 IOS_DEVICE_ENABLE = no      # connect to IOS device (iPad,iPhone)
+MAC_MODE = yes              # Disable Windows Numlock and enable Numlock emuration
 Link_Time_Optimization = no # if firmware size over limit, try this option
 ####  LED_BACK_ENABLE and LED_UNDERGLOW_ENABLE.
 ####    Do not enable these with audio at the same time.
 
-### Attack25 keyboard 'default' keymap: convenient command line option
-##    make ATTACK25=<options> attack25:defualt
-##    option= back | under | both | 1led | matrix | na | ios
+### Attack25 keyboard 'via' keymap: convenient command line option
+##    make ATTACK25=<options> attack25:via
+##    option= back | under | both | 1led | matrix | na | ios | win
 ##    ex.
-##      make ATTACK25=under    attack25:defualt
-##      make ATTACK25=under,ios attack25:defualt
-##      make ATTACK25=back     attack25:default
-##      make ATTACK25=back,na  attack25:default
-##      make ATTACK25=back,ios attack25:default
-##      make ATTACK25=1led     attack25:default
+##      make attack25:via
+##      make ATTACK25=win  attack25:via
+##      make ATTACK25=win,ios attack25:via
 
 
 ifneq ($(strip $(ATTACK25)),)
@@ -74,6 +74,9 @@ ifneq ($(strip $(ATTACK25)),)
   	ifeq ($(findstring ios,$(ATTACK25)), ios)
     	IOS_DEVICE_ENABLE = yes
   	endif
+	ifeq ($(findstring win,$(ATTACK25)), win)
+    	MAC_MODE = no
+  	endif
   	$(eval $(call ATTACK25_CUSTOMISE_MSG))
   	$(info )
 endif
@@ -94,7 +97,7 @@ else ifeq ($(strip $(LED_1LED_ENABLE)), yes)
     RGBLIGHT_ENABLE = yes
     OPT_DEFS += -DRGBLED_1LED
 else
-    RGBLIGHT_ENABLE = no
+  	RGBLIGHT_ENABLE = no
 endif
 
 ifeq ($(strip $(RGB_MATRIX)), yes)
@@ -104,6 +107,10 @@ endif
 
 ifeq ($(strip $(IOS_DEVICE_ENABLE)), yes)
     OPT_DEFS += -DIOS_DEVICE_ENABLE
+endif
+
+ifeq ($(strip $(MAC_MODE)), yes)
+    OPT_DEFS += -DMAC_MODE
 endif
 
 ifeq ($(strip $(LED_ANIMATIONS)), yes)

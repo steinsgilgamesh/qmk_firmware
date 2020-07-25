@@ -19,20 +19,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xFEED
-#define PRODUCT_ID      0xA109
-#define DEVICE_VER      0x0002
+#define PRODUCT_ID      0xA10F
+#define DEVICE_VER      0x00FF
 #define MANUFACTURER    monksoffunk
-#define PRODUCT         Attack25
-#define DESCRIPTION     5x5 Keyboard Pad
+#define PRODUCT         NumAttack16
+#define DESCRIPTION     4x4 Keyboard Pad
 
 /* key matrix size */
-#define MATRIX_ROWS 5
-#define MATRIX_COLS 5
+#define MATRIX_ROWS 4
+#define MATRIX_COLS 4
 
 /* key matrix pins */
-#define MATRIX_ROW_PINS { B4, B5, B6, B2, B3 }
-#define MATRIX_COL_PINS { D0, D4, D7, F5, F6 } //{ D0, C6, D7, F5, F6 }
-#define UNUSED_PINS
+    #define MATRIX_ROW_PINS { B5, B6, B2, B4 }
+    #define MATRIX_COL_PINS { D0, D4, B1, B3 }
 
 /* COL2ROW or ROW2COL */
 #define DIODE_DIRECTION ROW2COL
@@ -49,7 +48,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* prevent stuck modifiers */
 #define PREVENT_STUCK_MODIFIERS
 
-#define BACKLIGHT_PIN C6 //D4
+#define BACKLIGHT_PIN C6
 #define BACKLIGHT_LEVELS 8    //The number of brightness levels (maximum 31 excluding off)
 //#define BACKLIGHT_CAPS_LOCK //Enable Caps Lock indicator using backlight (for keyboards without dedicated LED)
 #define BACKLIGHT_BREATHING   //Enable backlight breathing, if supported
@@ -58,21 +57,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifdef RGBLIGHT_ENABLE
     #define RGB_DI_PIN D3
-    #define RGBLED_NUM 5
-    // current rev2 PCB has 5 underglow RGB LED only and so always RGBLED_NUM=5
-    // #ifdef RGBLED_BOTH
-    //   #define RGBLED_NUM 30
-    // #else
-    //     #ifdef RGBLED_BACK
-    //         #define RGBLED_NUM 25
-    //     #else
-    //         #ifdef RGBLED_1LED
-    //              #define RGBLED_NUM 1
-    //         #else
-    //             #define RGBLED_NUM 5
-    //         #endif
-    //     #endif
-    // #endif
+    #ifdef RGBLED_BOTH
+    //  #define RGBLED_NUM 30
+    #else
+        #ifdef RGBLED_BACK
+            #define RGBLED_NUM 25
+        #else
+            #ifdef RGBLED_1LED
+                // #define RGBLED_NUM 1
+            #else
+                #define RGBLED_NUM 5
+            #endif
+        #endif
+    #endif
 
     #ifndef IOS_DEVICE_ENABLE
         #if RGBLED_NUM <= 6
@@ -113,3 +110,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
         #define USB_MAX_POWER_CONSUMPTION 100
     #endif
 #endif
+
+#define rgb_sethsv_noeeprom rgblight_sethsv_noeeprom
+#define RGB_current_config_hue  RGB_current_config.hue
+#define RGB_current_config_sat  RGB_current_config.sat
+#define RGB_current_config_val  RGB_current_config.val
+#define RGB_CONFIG_hue RGB_CONFIG.hue
+#define RGB_CONFIG_sat RGB_CONFIG.sat
+#define RGB_CONFIG_val RGB_CONFIG.val
+#define RGB_CONFIG rgblight_config
+#define RGB_CONFIG_t rgblight_config_t
