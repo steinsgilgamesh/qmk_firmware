@@ -44,6 +44,7 @@ enum custom_keycodes {
 #define KC_ENSF  RSFT_T(KC_ENT)
 #define KC_ALAP  RALT_T(KC_APP)
 #define KC_SLSF  RSFT_T(KC_SLSH)
+#define KC_QUSF  RSFT_T(KC_QUOT)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_all(
@@ -54,7 +55,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------|
       KC_LSFT, KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSF,
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------|
-      KC_LCTL, _______, KC_LGUI,          _______,          KC_SPRA,          _______, KC_ALAP, _______, KC_LOWR
+      KC_LCTL, _______, KC_LGUI,          _______,          KC_SPRA,          _______, KC_LOWR, _______, KC_ALAP
   //`-----------------------------------------------------------------------------------------------------------'
   ),
 
@@ -62,7 +63,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //,-----------------------------------------------------------------------------------------------------------.
        KC_ESC,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5, KC_MINS,  KC_EQL, KC_JYEN, KC_LBRC, KC_RBRC, KC_BSLS,
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------|
-      _______,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10, XXXXXXX, XXXXXXX, KC_SCLN, KC_QUOT, _______, _______,
+      _______,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10, XXXXXXX, XXXXXXX, XXXXXXX, KC_SCLN, KC_QUSF, KC_QUSF,
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------|
       _______, _______,  KC_F11,  KC_F12, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_GRV,   KC_RO,
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------|

@@ -58,17 +58,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------|
       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_ROSF,
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------|
-      KC_LCTL, KC_LALT, KC_LGUI,                   KC_BSLO,          KC_SPRA,  KC_APP, KC_RALT, KC_RGUI, KC_RCTL
+      KC_LCTL, KC_LALT, KC_LGUI,                   KC_BSLO,          KC_SPRA, KC_RGUI, KC_RALT,  KC_APP, KC_RCTL
   //`-----------------------------------------------------------------------------------------------------------'
   ),
 
   [_LOWER] = LAYOUT_arrow(
   //,-----------------------------------------------------------------------------------------------------------.
-      _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5, KC_MINS,  KC_EQL, KC_JYEN, KC_LBRC, KC_RBRC,  KC_DEL,
+      _______,   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5, KC_MINS,  KC_EQL, KC_JYEN, KC_LBRC, KC_RBRC, KC_BSLS,
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------|
-      _______,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_QUOT, KC_BSLS,
+      _______,   KC_F6,   KC_F7,   KC_F8,   KC_F9,  KC_F10, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_QUOT,
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------|
-      _______,  KC_F11,  KC_F12, XXXXXXX,   KANJI,  KC_ENT,  KC_DEL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+      _______,  KC_F11,  KC_F12, XXXXXXX,   KANJI,  KC_ENT,  KC_DEL, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_GRV,
   //|--------+--------+--------+--------+--------+--------|--------+--------+--------+--------+--------+--------|
       _______, _______, _______,                   _______,          KC_MLAD, _______, _______, _______, _______
   //`-----------------------------------------------------------------------------------------------------------'

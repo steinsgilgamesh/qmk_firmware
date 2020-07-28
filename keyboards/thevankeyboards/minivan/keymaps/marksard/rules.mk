@@ -18,6 +18,8 @@ SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
 TAP_DANCE_ENABLE = no
 
 LED_ANIMATIONS = yes        # LED animations
+VIA_ENABLE = yes
+LTO_ENABLE = yes
 
 ifeq ($(strip $(LED_ANIMATIONS)), yes)
     # OPT_DEFS += -DRGBLIGHT_ANIMATIONS
