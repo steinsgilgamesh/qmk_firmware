@@ -1,11 +1,11 @@
 NK65
 =========
 
-[NK65]()
+![NK65](https://i.imgur.com/EXNbVpL.jpg)
 
 This is a standard fixed layout 65% PCB. It supports VIA and full per-key RGB.
 
-Keyboard Maintainer: [Yiancar](http://yiancar-designs.com/) and on [github](https://github.com/yiancar)   
+Keyboard Maintainer: [Yiancar](http://yiancar-designs.com/) and on [GitHub](https://github.com/yiancar)   
 Hardware Supported: A 65% keyboard with STM32F303CC   
 Hardware Availability: https://novelkeys.xyz/   
 
