@@ -198,12 +198,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       crkbd_update_tri_layer(_SYMBOL, _NAVI, _FUNC);
     }
     return false;
-    // case FUNC:
-    //   if (record->event.pressed) {
-    //     layer_on(_FUNC);
-    //   } else {
-    //     layer_off(_FUNC);
-    //   } return false;
+  // case FUNC:
+  //   if (record->event.pressed) {
+  //     layer_on(_FUNC);
+  //   } else {
+  //     layer_off(_FUNC);
+  //   } return false;
     // case LOWER:
     //   if (record->event.pressed) {
     //     layer_on(_LOWER);
